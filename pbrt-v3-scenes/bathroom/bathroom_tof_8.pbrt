@@ -1,0 +1,383 @@
+# LookAt 0 2.3 3.0  1.02 .5 0   0 1 0
+
+Camera "perspective" 
+       "float fov" 50
+
+Film "image" 
+        "integer xresolution" 320
+        "integer yresolution" 240
+        "string filename" "bathroom.exr"
+
+Sampler "random" "integer pixelsamples" [512]
+
+WorldBegin
+
+Scale -.1 .1 .1
+
+AttributeBegin
+    CoordSysTransform "camera"
+    LightSource "point" "color I" [ 100 100 100 ]
+AttributeEnd
+
+# white border around black thing on floor?
+MakeNamedMaterial "blanc" 
+        "string type" [ "matte" ] "rgb Kd" [ 0.73 0.73 0.73 ] 
+
+# towels and mats on floor
+TransformBegin
+  Scale 10 10 10
+  Texture "cloth-bump-base" "float" "fbm"
+  Texture "cloth-bump" "float" "scale" "texture tex1" "cloth-bump-base" "float tex2" .025
+TransformEnd
+
+MakeNamedMaterial "blanc_drap" 
+        "string type" [ "matte" ] "rgb Kd" [ 0.61 0.61 0.61 ] 
+
+Texture "wood" "color" "imagemap" "string filename" "textures/WoodFine0016_L.png"
+MakeNamedMaterial "bois_" 
+        "string type" [ "matte" ] "rgb Kd" [ 0.48 0.48 0.48 ] 
+
+# objects on shelves
+MakeNamedMaterial "bois_ebene" 
+        "string type" [ "matte" ] "rgb Kd" [ 0.56 0.56 0.56 ] 
+
+
+# small bottle by the tub
+MakeNamedMaterial "etiquette" 
+        "string type" [ "matte" ] "rgb Kd" [ 0.50 0.50 0.50 ] 
+
+# black seam around top of tub
+MakeNamedMaterial "jointure_noire" 
+        "string type" [ "matte" ] "rgb Kd" [ 0.34 0.34 0.34 ] 
+
+# walls
+MakeNamedMaterial "latte" 
+        "string type" [ "matte" ] "rgb Kd" [ 0.42 0.42 0.42 ] 
+
+MakeNamedMaterial "lumiere_cadre" 
+        "string type" [ "matte" ] "rgb Kd" [ 0.36 0.36 0.36 ] 
+
+# metal trashcan
+MakeNamedMaterial "metal_poubelle" 
+        "string type" [ "matte" ] "rgb Kd" [ 0.39 0.39 0.39 ] 
+
+# metal faucets, bars, drain in sink, ...
+MakeNamedMaterial "metal_vis.001" 
+        "string type" [ "matte" ] "rgb Kd" [ 0.42 0.42 0.42 ] 
+
+MakeNamedMaterial "mirror" 
+        "string type" [ "matte" ] "rgb Kd" [ 0.51 0.51 0.51 ] 
+
+# walls, painted wood shelves by the window
+MakeNamedMaterial "mur_blanc" 
+        "string type" [ "matte" ] "rgb Kd" [ 0.32 0.32 0.32 ] 
+
+# wall on the right
+MakeNamedMaterial "mur_droit" 
+        "string type" [ "matte" ] "rgb Kd" [ 0.75 0.75 0.75 ] 
+
+# black scale? on floor
+MakeNamedMaterial "noir" 
+        "string type" [ "matte" ] "rgb Kd" [ 0.77 0.77 0.77 ] 
+
+# plastic bit at top of bottle by bathrub
+MakeNamedMaterial "plastique" 
+        "string type" [ "matte" ] "rgb Kd" [ 0.55 0.55 0.55 ] 
+
+# trash can plastic part, also plastic on outlet
+MakeNamedMaterial "plastique_poubelle" 
+        "string type" [ "matte" ] "rgb Kd" [ 0.54 0.54 0.54 ] 
+
+# middle part of squiggly sculpture on shelf
+MakeNamedMaterial "poignée_marron" 
+        "string type" [ "matte" ] "rgb Kd" [ 0.47 0.47 0.47 ] 
+
+# porcelain: sink bowls, interior of bathrub
+MakeNamedMaterial "porcelaine.002" 
+        "string type" [ "matte" ] "rgb Kd" [ 0.75 0.75 0.75 ] 
+
+# floor
+Texture "wood-floor" "color" "imagemap" "string filename" "textures/WoodFine0034_7_S.png"
+MakeNamedMaterial "sol" 
+        "string type" [ "matte" ] "rgb Kd" [ 0.48 0.48 0.48 ] 
+
+# bottle by bathtub
+MakeNamedMaterial "verre" 
+        "string type" [ "matte" ] "rgb Kd" [ 0.36 0.36 0.36 ] 
+
+###########################################################################
+
+
+AttributeBegin
+    NamedMaterial "etiquette"
+    Shape "plymesh" "string filename" "geometry/mesh_00002.ply" 
+    NamedMaterial "plastique"
+    Shape "plymesh" "string filename" "geometry/mesh_00003.ply" 
+    NamedMaterial "verre"
+    Shape "plymesh" "string filename" "geometry/mesh_00004.ply" 
+AttributeEnd
+
+AttributeBegin
+    NamedMaterial "metal_vis.001"
+    Shape "plymesh" "string filename" "geometry/mesh_00005.ply" 
+AttributeEnd
+
+AttributeBegin
+    NamedMaterial "metal_vis.001"
+    Shape "plymesh" "string filename" "geometry/mesh_00006.ply" 
+AttributeEnd
+
+AttributeBegin
+    NamedMaterial "metal_vis.001"
+    Shape "plymesh" "string filename" "geometry/mesh_00007.ply" 
+AttributeEnd
+
+AttributeBegin
+    NamedMaterial "blanc_drap"
+    Shape "plymesh" "string filename" "geometry/mesh_00011.ply" 
+AttributeEnd
+
+AttributeBegin
+    NamedMaterial "metal_vis.001"
+    Shape "plymesh" "string filename" "geometry/mesh_00012.ply" 
+AttributeEnd
+
+AttributeBegin
+    NamedMaterial "bois_ebene"
+    Shape "plymesh" "string filename" "geometry/mesh_00013.ply" 
+AttributeEnd
+
+AttributeBegin
+    NamedMaterial "bois_ebene"
+    Shape "plymesh" "string filename" "geometry/mesh_00014.ply" 
+AttributeEnd
+
+AttributeBegin
+    NamedMaterial "bois_ebene"
+    Shape "plymesh" "string filename" "geometry/mesh_00015.ply" 
+AttributeEnd
+
+AttributeBegin
+    NamedMaterial "bois_ebene"
+    Shape "plymesh" "string filename" "geometry/mesh_00016.ply" 
+AttributeEnd
+
+AttributeBegin
+    NamedMaterial "bois_ebene"
+    Shape "plymesh" "string filename" "geometry/mesh_00017.ply" 
+    NamedMaterial "poignée_marron"
+    Shape "plymesh" "string filename" "geometry/mesh_00018.ply" 
+AttributeEnd
+
+AttributeBegin
+    NamedMaterial "lumiere_cadre"
+    Shape "plymesh" "string filename" "geometry/mesh_00019.ply" 
+    NamedMaterial "mur_blanc"
+    Shape "plymesh" "string filename" "geometry/mesh_00020.ply" 
+AttributeEnd
+
+AttributeBegin
+    NamedMaterial "bois_ebene"
+    Shape "plymesh" "string filename" "geometry/mesh_00021.ply" 
+AttributeEnd
+
+AttributeBegin
+    NamedMaterial "mur_blanc"
+    Shape "plymesh" "string filename" "geometry/mesh_00022.ply" 
+AttributeEnd
+
+AttributeBegin
+    NamedMaterial "mur_blanc"
+    Shape "plymesh" "string filename" "geometry/mesh_00023.ply" 
+AttributeEnd
+
+AttributeBegin
+    NamedMaterial "metal_vis.001"
+    Shape "plymesh" "string filename" "geometry/mesh_00024.ply" 
+AttributeEnd
+
+AttributeBegin
+    NamedMaterial "metal_vis.001"
+    Shape "plymesh" "string filename" "geometry/mesh_00025.ply" 
+AttributeEnd
+
+AttributeBegin
+    NamedMaterial "mur_blanc"
+    Shape "plymesh" "string filename" "geometry/mesh_00026.ply" 
+AttributeEnd
+
+AttributeBegin
+    NamedMaterial "mur_blanc"
+    Shape "plymesh" "string filename" "geometry/mesh_00027.ply" 
+AttributeEnd
+
+AttributeBegin
+    NamedMaterial "blanc"
+    Shape "plymesh" "string filename" "geometry/mesh_00028.ply" 
+    NamedMaterial "noir"
+    Shape "plymesh" "string filename" "geometry/mesh_00029.ply" 
+AttributeEnd
+
+AttributeBegin
+    NamedMaterial "metal_vis.001"
+    Shape "plymesh" "string filename" "geometry/mesh_00030.ply" 
+AttributeEnd
+
+AttributeBegin
+    NamedMaterial "metal_vis.001"
+    Shape "plymesh" "string filename" "geometry/mesh_00031.ply" 
+AttributeEnd
+
+AttributeBegin
+    NamedMaterial "metal_vis.001"
+    Shape "plymesh" "string filename" "geometry/mesh_00032.ply" 
+AttributeEnd
+
+AttributeBegin
+    NamedMaterial "metal_vis.001"
+    Shape "plymesh" "string filename" "geometry/mesh_00033.ply" 
+AttributeEnd
+
+AttributeBegin
+    NamedMaterial "metal_vis.001"
+    Shape "plymesh" "string filename" "geometry/mesh_00034.ply" 
+AttributeEnd
+
+AttributeBegin
+    NamedMaterial "metal_vis.001"
+    Shape "plymesh" "string filename" "geometry/mesh_00035.ply" 
+    NamedMaterial "mirror"
+    Shape "plymesh" "string filename" "geometry/mesh_00036.ply" 
+AttributeEnd
+
+AttributeBegin
+    NamedMaterial "blanc_drap"
+    Shape "plymesh" "string filename" "geometry/mesh_00037.ply" 
+AttributeEnd
+
+AttributeBegin
+    NamedMaterial "metal_vis.001"
+    Shape "plymesh" "string filename" "geometry/mesh_00038.ply" 
+AttributeEnd
+
+AttributeBegin
+    NamedMaterial "metal_vis.001"
+    Shape "plymesh" "string filename" "geometry/mesh_00039.ply" 
+    NamedMaterial "plastique_poubelle"
+    Shape "plymesh" "string filename" "geometry/mesh_00040.ply" 
+AttributeEnd
+
+AttributeBegin
+    NamedMaterial "metal_vis.001"
+    Shape "plymesh" "string filename" "geometry/mesh_00041.ply" 
+AttributeEnd
+
+AttributeBegin
+    NamedMaterial "metal_vis.001"
+    Shape "plymesh" "string filename" "geometry/mesh_00042.ply" 
+AttributeEnd
+
+AttributeBegin
+    NamedMaterial "blanc_drap"
+    Shape "plymesh" "string filename" "geometry/mesh_00043.ply" 
+AttributeEnd
+
+AttributeBegin
+    NamedMaterial "blanc_drap"
+    Shape "plymesh" "string filename" "geometry/mesh_00044.ply" 
+AttributeEnd
+
+AttributeBegin
+    NamedMaterial "metal_poubelle"
+    Shape "plymesh" "string filename" "geometry/mesh_00045.ply" 
+    NamedMaterial "plastique_poubelle"
+    Shape "plymesh" "string filename" "geometry/mesh_00046.ply" 
+AttributeEnd
+
+AttributeBegin
+    NamedMaterial "metal_vis.001"
+    Shape "plymesh" "string filename" "geometry/mesh_00047.ply" 
+AttributeEnd
+
+AttributeBegin
+    NamedMaterial "metal_vis.001"
+    Shape "plymesh" "string filename" "geometry/mesh_00048.ply" 
+AttributeEnd
+
+AttributeBegin
+    NamedMaterial "metal_vis.001"
+    Shape "plymesh" "string filename" "geometry/mesh_00049.ply" 
+AttributeEnd
+
+AttributeBegin
+    NamedMaterial "metal_vis.001"
+    Shape "plymesh" "string filename" "geometry/mesh_00050.ply" 
+AttributeEnd
+
+AttributeBegin
+    NamedMaterial "metal_vis.001"
+    Shape "plymesh" "string filename" "geometry/mesh_00051.ply" 
+AttributeEnd
+
+AttributeBegin
+    NamedMaterial "metal_vis.001"
+    Shape "plymesh" "string filename" "geometry/mesh_00052.ply" 
+AttributeEnd
+
+AttributeBegin
+    NamedMaterial "porcelaine.002"
+    Shape "plymesh" "string filename" "geometry/mesh_00053.ply" 
+AttributeEnd
+
+AttributeBegin
+    NamedMaterial "porcelaine.002"
+    Shape "plymesh" "string filename" "geometry/mesh_00054.ply" 
+AttributeEnd
+
+AttributeBegin
+    NamedMaterial "lumiere_cadre"
+    Shape "plymesh" "string filename" "geometry/mesh_00055.ply" 
+    NamedMaterial "mur_blanc"
+    Shape "plymesh" "string filename" "geometry/mesh_00056.ply" 
+AttributeEnd
+
+AttributeBegin
+    NamedMaterial "bois_"
+    Shape "plymesh" "string filename" "geometry/mesh_00057.ply" 
+AttributeEnd
+
+AttributeBegin
+    NamedMaterial "bois_"
+    Shape "plymesh" "string filename" "geometry/mesh_00058.ply" 
+    NamedMaterial "jointure_noire"
+    Shape "plymesh" "string filename" "geometry/mesh_00059.ply" 
+    NamedMaterial "porcelaine.002"
+    Shape "plymesh" "string filename" "geometry/mesh_00060.ply" 
+AttributeEnd
+
+AttributeBegin
+    NamedMaterial "bois_"
+    Shape "plymesh" "string filename" "geometry/mesh_00061.ply" 
+    Shape "plymesh" "string filename" "geometry/mesh_00062.ply" 
+AttributeEnd
+
+AttributeBegin
+    NamedMaterial "latte"
+    Shape "plymesh" "string filename" "geometry/mesh_00063.ply" 
+    NamedMaterial "mirror"
+    Shape "plymesh" "string filename" "geometry/mesh_00064.ply" 
+    NamedMaterial "mur_blanc"
+    Shape "plymesh" "string filename" "geometry/mesh_00065.ply" 
+    NamedMaterial "mur_droit"
+    Shape "plymesh" "string filename" "geometry/mesh_00066.ply" 
+    NamedMaterial "sol"
+    Shape "plymesh" "string filename" "geometry/mesh_00067.ply" 
+AttributeEnd
+
+AttributeBegin
+    NamedMaterial "bois_"
+    Shape "plymesh" "string filename" "geometry/mesh_00068.ply" 
+AttributeEnd
+
+
+WorldEnd

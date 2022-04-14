@@ -1,0 +1,114 @@
+# Materials File
+
+MakeNamedMaterial "Frosted Glass"
+	"float uroughness" [0.1]
+	"float vroughness" [0.1]
+	"string type" ["glass"]
+
+# chair seats, lamp cord and edge bits
+MakeNamedMaterial "White Plastic"
+	"color Kd" [0.5 .5 .5]
+        "color Ks" [.3 .3 .3]
+	"float roughness" [0.01]
+	"string type" ["plastic"]
+
+MakeNamedMaterial "Paint - Black Satin"
+	"color Kd" [0.02 .02 .02]
+        "color Ks" [.4 .4 .4]
+        "float roughness" .2
+	"string type" ["plastic"]
+
+# teacup exterior
+MakeNamedMaterial "Ceramic.001"
+    "string type" "fourier" "string bsdffile" "bsdfs/ceramic.bsdf"
+
+
+# teacup rim
+MakeNamedMaterial "Gold Paint"
+        "spectrum eta" "spds/Ag.eta.spd"
+        "spectrum k" "spds/Ag.k.spd"
+	"float roughness" [0.01]
+	"string type" ["metal"]
+
+MakeNamedMaterial "Material.005"
+	"color Kd" [.5 .5 .5]
+	"float sigma" [0.000000000000000]
+	"string type" ["matte"]
+
+# saucers? something on table
+MakeNamedMaterial "Material.002"
+	"color Kd" [.5 .5 .5]
+	"float sigma" [0.000000000000000]
+	"string type" ["matte"]
+
+# teapot and pitcher
+MakeNamedMaterial "Ceramic"
+#	"color Kd" [0.7 .7 .7]
+#        "color Ks" [.4 .4 .4]
+#        "float roughness" .2
+#	"string type" ["plastic"]
+    "string type" "fourier" "string bsdffile" "bsdfs/ceramic.bsdf"
+
+# chair legs
+MakeNamedMaterial "Chrome"
+        "spectrum eta" "spds/Al.eta.spd"
+        "spectrum k" "spds/Al.k.spd"
+	"float roughness" [0.01]
+	"string type" ["metal"]
+#    "string type" "fourier" "string bsdffile" "chrome.bsdf"
+
+
+MakeNamedMaterial "Black Rubber"
+	"color Kd" [0.02 .02 .02]
+	"color Ks" [0.1 .1 .1]
+        "float roughness" [.2]
+	"string type" ["plastic"]
+
+MakeNamedMaterial "Emmission"
+	"color Kd" [.5 .5 .5]
+	"float sigma" [0.000000000000000]
+	"string type" ["matte"]
+
+# tabletop
+# bssrdf?
+TransformBegin
+#Scale .2 .2 .2
+Texture "marble-tex" "color" "marble" "float scale" 4
+TransformEnd
+
+MakeNamedMaterial "White Marble"
+	"texture Kd" "marble-tex"
+        "color Ks" [.3 .3 .3]
+	"float roughness" [0.1]
+	"string type" ["plastic"]
+
+Texture "floor-tex" "color" "imagemap"
+    "string filename" ["textures/Seamless Marble Tiles.png"]
+Texture "floor-bump-tex" "float" "imagemap"
+    "string filename" ["textures/Seamless Marble Tiles.png"]
+
+MakeNamedMaterial "Floor Tiles"
+	"texture Kd" "floor-tex"
+	"float sigma" [0.000000000000000]
+#        "texture bumpmap" "floor-bump-tex"
+	"string type" ["matte"]
+
+# walls
+MakeNamedMaterial "Paint - White Matt"
+	"color Kd" [0.63999999 0.63999999 0.63999999]
+	"float sigma" [10]
+	"string type" ["matte"]
+
+Texture "art-tex" "color" "imagemap"
+    "string filename" ["textures/goldbuddha.png"]
+MakeNamedMaterial "Artwork"
+	"texture Kd" "art-tex"
+        "color Ks" [.4 .4 .4]
+	"float roughness" [0.2]
+	"string type" ["plastic"]
+
+# baseboard
+MakeNamedMaterial "Paint - White Gloss"
+	"color Kd" [.6 .6 .6]
+	"float sigma" [0.000000000000000]
+	"string type" ["matte"]

@@ -1,0 +1,90 @@
+# Gtool Exporter Ver. 1.00 for pbrt v2.0 Render, www.pbrt.org 
+# Created by Guillermo M. Leal LLaguno,  g.llaguno@evvisual.com,  www.evvisual.com 
+# Exported on: 12/22/2009 12:31:08 AM 
+
+Scale -1 1 1  # account for fixed lookat bug... 
+
+# Camera Camera20
+LookAt 6.18231 -5.32462 7.12809
+		 9.5 -4.63988 7.09695
+		 0.022689 0.0213372 0.999515
+
+Camera "realistic" 
+#	"string lensfile" "lenses/wide.22mm.dat" 
+	"string lensfile" "lenses/fisheye.10mm.dat" 
+	"float aperturediameter" 5.5
+        "float focusdistance" 0.55
+
+Film "image"
+# "float maxsampleluminance" 40
+        "float diagonal" 45
+	 "integer xresolution"  [1200]
+	 "integer yresolution"  [800]
+         "float cropwindow" [.15 .85 0 1]
+         "float scale" 2
+         "string filename" "f6-17.exr"
+
+Sampler "sobol" "integer pixelsamples" [4096] 
+
+WorldBegin
+
+# Enviorment 
+
+AttributeBegin 
+Rotate 198.0 0 0 1
+LightSource "infinite" 
+"integer nsamples" [4]
+"color scale" [13.0 13.0 13.0]
+	"string mapname" ["textures/RenoSuburb01_sm.exr"]
+AttributeEnd 
+
+# ***** Lights ***** 
+
+# ***** End  Lights *****
+
+#Main File
+Include "geometry/sanmiguel-mat.pbrt" 
+Include "geometry/sanmiguel-geom.pbrt" 
+
+#Trees
+Include "geometry/arbol-mat.pbrt" 
+Include "geometry/troncoA-geom.pbrt" 
+Include "geometry/troncoB-geom.pbrt" 
+#Trees Leaves
+
+Include "geometry/hojas_a1-geom.pbrt"   	# tapa ventanas
+Include "geometry/hojas_a2-geom.pbrt" 
+Include "geometry/hojas_a3-geom.pbrt" 
+Include "geometry/hojas_a4-geom.pbrt" 
+Include "geometry/hojas_a5-geom.pbrt"  		# es arriba no se ve en cam9
+Include "geometry/hojas_a6-geom.pbrt" 
+Include "geometry/hojas_a7-geom.pbrt" 
+
+Include "geometry/hojas_b2-geom.pbrt"  		# rama abajo atravezada
+Include "geometry/hojas_b3-geom.pbrt" 
+Include "geometry/hojas_b4-geom.pbrt" 		# rama abajo atravezada
+
+#Wall Ivy
+Include "geometry/enredadera-mat.pbrt" 
+Include "geometry/enredadera-geom.pbrt" 
+#Pots
+Include "geometry/macetas-mat.pbrt" 
+Include "geometry/macetas-geom.pbrt" 
+#Plants
+Include "geometry/plantas-mat.pbrt" 
+Include "geometry/plantas-geom.pbrt" 
+
+#Tables Downstairs
+Include "geometry/mesas_abajo-mat.pbrt" 
+Include "geometry/mesas_abajo-geom.pbrt" 
+#Tables Upstairs
+Include "geometry/mesas_arriba-mat.pbrt" 
+Include "geometry/mesas_arriba-geom.pbrt" 
+#Table Downstairs open space
+Include "geometry/mesas_patio-mat.pbrt" 
+Include "geometry/mesas_patio-geom.pbrt" 
+#Silverware
+Include "geometry/platos-mat.pbrt" 
+Include "geometry/platos-geom.pbrt" 
+
+WorldEnd

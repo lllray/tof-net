@@ -1,0 +1,113 @@
+# x 0.1 y 0.7 in focus
+# x 0.6 y 0.5 for out of focus
+
+#@@ -651,15 +651,20 @@ Float RealisticCamera::GenerateRay(const CameraSample &sample, Ray *ray) const {
+#     ProfilePhase prof(Prof::GenerateCameraRay);
+#     ++totalRays;
+#     // Find point on film, _pFilm_, corresponding to _sample.pFilm_
+#-    Point2f s(sample.pFilm.x / film->fullResolution.x,
+#-              sample.pFilm.y / film->fullResolution.y);
+#+    static Float px = atof(getenv("PX"));
+#+    static Float py = atof(getenv("PY"));
+#+    Point2f s(px, py);
+#     Point2f pFilm2 = film->GetPhysicalExtent().Lerp(s);
+#     Point3f pFilm(-pFilm2.x, pFilm2.y, 0);
+# 
+#     // Trace ray from _pFilm_ through lens system
+#     Float exitPupilBoundsArea;
+#-    Point3f pRear = SampleExitPupil(Point2f(pFilm.x, pFilm.y), sample.pLens,
+#-                                    &exitPupilBoundsArea);
+#+    Point3f pRear = SampleExitPupil(
+#+        Point2f(pFilm.x, pFilm.y),
+#+        Point2f(sample.pFilm.x / film->fullResolution.x,
+#+                sample.pFilm.y / film->fullResolution.y),
+#+        &exitPupilBoundsArea);
+#+
+#     Ray rFilm(pFilm, pRear - pFilm, Infinity,
+#               Lerp(sample.time, shutterOpen, shutterClose));
+#     if (!TraceLensesFromFilm(rFilm, ray)) {
+
+Scale -1 1 1  # account for fixed lookat bug... 
+
+# Camera Camera04
+LookAt 4.42961 -1.89153 6.75331
+		 5.40206 -1.65858 6.74488
+		 0.00819354 0.00196274 0.999965
+
+Camera "realistic" 
+	"string lensfile" "lenses/wide.22mm.dat" 
+	"string lensfile" "lenses/fisheye.10mm.dat" 
+	"float aperturediameter" 10 # 5.5
+        "float focusdistance" 0.7 # 1.5 # 0.55
+
+Film "image" 
+	 "integer xresolution"  [900]	 "integer yresolution"  [900]
+         "string filename" "f6-25.exr"
+
+Sampler "sobol" 	 "integer pixelsamples" [2048] 
+
+Integrator "path" 
+
+WorldBegin
+
+
+# Enviorment 
+
+AttributeBegin 
+Rotate 198.0 0 0 1
+LightSource "infinite" 
+"integer nsamples" [32]
+"color scale" [14.0 14.0 14.0]
+	"string mapname" ["textures/RenoSuburb01_sm.exr"]
+AttributeEnd 
+
+# ***** Lights ***** 
+
+# ***** End  Lights *****
+
+#Main File
+Include "geometry/sanmiguel-mat.pbrt" 
+Include "geometry/sanmiguel-geom.pbrt" 
+
+#Trees
+Include "geometry/arbol-mat.pbrt" 
+Include "geometry/troncoA-geom.pbrt" 
+Include "geometry/troncoB-geom.pbrt" 
+#Trees Leaves
+
+Include "geometry/hojas_a1-geom.pbrt"   	# tapa ventanas
+Include "geometry/hojas_a2-geom.pbrt" 
+Include "geometry/hojas_a3-geom.pbrt" 
+Include "geometry/hojas_a4-geom.pbrt" 
+Include "geometry/hojas_a5-geom.pbrt"  		# es arriba no se ve en cam9
+Include "geometry/hojas_a6-geom.pbrt" 
+Include "geometry/hojas_a7-geom.pbrt" 
+
+Include "geometry/hojas_b2-geom.pbrt"  		# rama abajo atravezada
+Include "geometry/hojas_b3-geom.pbrt" 
+Include "geometry/hojas_b4-geom.pbrt" 		# rama abajo atravezada
+
+#Wall Ivy
+Include "geometry/enredadera-mat.pbrt" 
+Include "geometry/enredadera-geom.pbrt" 
+#Pots
+Include "geometry/macetas-mat.pbrt" 
+Include "geometry/macetas-geom.pbrt" 
+#Plants
+Include "geometry/plantas-mat.pbrt" 
+Include "geometry/plantas-geom.pbrt" 
+
+#Tables Downstairs
+Include "geometry/mesas_abajo-mat.pbrt" 
+Include "geometry/mesas_abajo-geom.pbrt" 
+#Tables Upstairs
+Include "geometry/mesas_arriba-mat.pbrt" 
+Include "geometry/mesas_arriba-geom.pbrt" 
+#Table Downstairs open space
+Include "geometry/mesas_patio-mat.pbrt" 
+Include "geometry/mesas_patio-geom.pbrt" 
+#Silverware
+Include "geometry/platos-mat.pbrt" 
+Include "geometry/platos-geom.pbrt" 
+
+WorldEnd

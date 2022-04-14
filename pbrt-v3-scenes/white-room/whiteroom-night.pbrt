@@ -1,0 +1,46 @@
+# todo:
+# layered material for table
+# material for chairs/sofa
+# different material for radiator paint
+# set up lights for night-time render
+
+Film "image" "string filename" "whiteroom-night.exr"
+   "integer xresolution" [1100] "integer yresolution" [600]
+#   "integer xresolution" [2200] "integer yresolution" [1200]
+# imgtool convert -bloomlevel 5 -tonemap -maxluminance 3 -scale 4 whiteroom-night.{exr,png}
+
+# fireplace and drawers on right "float cropwindow" [ .2 .4 .45 .75]
+#"float cropwindow" [.33 .45 .62 .7]
+# wood planks
+#"float cropwindow" [ .2 .37 .7 .85]
+#"float cropwindow" [ .32 .52  .7 .9]
+
+LookAt -2.8 1.8 4.9    -0.6 1.4 2    0 1 0
+
+Camera "perspective" "float fov" [66]
+
+Sampler "sobol" "integer pixelsamples" [512]
+Integrator "bdpt"
+
+WorldBegin
+Scale -1 1 1
+
+###########################################################################
+# materials
+
+Include "materials.pbrt"
+
+###########################################################################
+# lights
+
+Include "lights-night.pbrt"
+
+###########################################################################
+# geom
+
+# Converted from "The_White_Room-Jay-Hardy.obj" by obj2pbrt
+# Scene bounds: (-5.890781, -0.833973, -4.691200) - (3.150222, 4.376391, 8.212237)
+
+Include "geometry.pbrt"
+
+WorldEnd

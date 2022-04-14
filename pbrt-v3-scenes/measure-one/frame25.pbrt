@@ -1,0 +1,37 @@
+Transform [-0.000120149158703 -0.00540833472859 -0.999985367633 0  0.0222097502109 0.999738697098 -0.0054096691541 0  0.999753325856 -0.0222100751969 -4.28612223838e-16 0  1.46547868843 65.9663319345 1419.7722128 1]
+Camera "perspective" "float fov" [22.2753333373] "float focaldistance" [899.384338379] "float lensradius" [0]
+
+Film "image" "string filename" ["frame25.exr"]
+    "integer xresolution" [1920] "integer yresolution" [840]
+   "integer xresolution" [1440] "integer yresolution" [630]
+#   "integer xresolution" [960] "integer yresolution" [420]
+#   "integer xresolution" [480] "integer yresolution" [210]
+   "float scale" .25
+   "float maxsampleluminance" 50
+   "integer writefrequency" 120
+# imgtool convert -bloomscale .4 -bloomlevel 1 ...
+
+PixelFilter "gaussian" "float xwidth" 1.5 "float ywidth" 1.5
+
+Sampler "sobol" "integer pixelsamples" [8192]
+Integrator "bdpt" "integer maxdepth" 4
+
+Sampler "sobol" "integer pixelsamples" 16384
+Sampler "sobol" "integer pixelsamples" 4096
+Integrator "path" "integer maxdepth" 4
+
+WorldBegin
+
+AttributeBegin
+CoordSysTransform "camera"
+LightSource "point" "color I" [60000 60000 50000]
+AttributeEnd
+
+# Default Material
+Material "matte" "rgb Kd" [.3 .3 .3]
+
+Include "textures.pbrt"
+Include "materials.pbrt"
+Include "geometry-f25.pbrt"
+
+WorldEnd

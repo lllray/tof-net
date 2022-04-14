@@ -1,0 +1,112 @@
+
+# LookAt -0.376 0.799 1.415 -0.238 0.991 1.092 0.188 0.262 0.236
+Scale -1 1 1
+
+Camera "perspective" 
+       "float fov" 50
+
+Film "image" 
+        "integer xresolution" 320
+        "integer yresolution" 240
+        "string filename" "breakfast.exr"
+
+Sampler "random" "integer pixelsamples" [512]
+
+WorldBegin
+Scale .2 .2 .2
+
+AttributeBegin
+    CoordSysTransform "camera"
+    LightSource "point" "color I" [ 100 100 100 ]
+AttributeEnd
+
+# Materials File
+
+MakeNamedMaterial "Frosted Glass"
+        "string type" [ "matte" ] "rgb Kd" [ 0.51 0.51 0.51 ] 
+
+# chair seats, lamp cord and edge bits
+MakeNamedMaterial "White Plastic"
+        "string type" [ "matte" ] "rgb Kd" [ 0.76 0.76 0.76 ] 
+
+MakeNamedMaterial "Paint - Black Satin"
+        "string type" [ "matte" ] "rgb Kd" [ 0.70 0.70 0.70 ] 
+
+# teacup exterior
+MakeNamedMaterial "Ceramic.001"
+        "string type" [ "matte" ] "rgb Kd" [ 0.78 0.78 0.78 ] 
+
+
+# teacup rim
+MakeNamedMaterial "Gold Paint"
+        "string type" [ "matte" ] "rgb Kd" [ 0.63 0.63 0.63 ] 
+
+MakeNamedMaterial "Material.005"
+        "string type" [ "matte" ] "rgb Kd" [ 0.32 0.32 0.32 ] 
+
+# saucers? something on table
+MakeNamedMaterial "Material.002"
+        "string type" [ "matte" ] "rgb Kd" [ 0.72 0.72 0.72 ] 
+
+# teapot and pitcher
+MakeNamedMaterial "Ceramic"
+        "string type" [ "matte" ] "rgb Kd" [ 0.77 0.77 0.77 ] 
+
+# chair legs
+MakeNamedMaterial "Chrome"
+        "string type" [ "matte" ] "rgb Kd" [ 0.64 0.64 0.64 ] 
+
+
+MakeNamedMaterial "Black Rubber"
+        "string type" [ "matte" ] "rgb Kd" [ 0.68 0.68 0.68 ] 
+
+MakeNamedMaterial "Emmission"
+        "string type" [ "matte" ] "rgb Kd" [ 0.67 0.67 0.67 ] 
+
+# tabletop
+# bssrdf?
+TransformBegin
+#Scale .2 .2 .2
+Texture "marble-tex" "color" "marble" "float scale" 4
+TransformEnd
+
+MakeNamedMaterial "White Marble"
+        "string type" [ "matte" ] "rgb Kd" [ 0.50 0.50 0.50 ] 
+
+Texture "floor-tex" "color" "imagemap"
+    "string filename" ["textures/Seamless Marble Tiles.png"]
+Texture "floor-bump-tex" "float" "imagemap"
+    "string filename" ["textures/Seamless Marble Tiles.png"]
+
+MakeNamedMaterial "Floor Tiles"
+        "string type" [ "matte" ] "rgb Kd" [ 0.63 0.63 0.63 ] 
+
+# walls
+MakeNamedMaterial "Paint - White Matt"
+        "string type" [ "matte" ] "rgb Kd" [ 0.39 0.39 0.39 ] 
+
+Texture "art-tex" "color" "imagemap"
+    "string filename" ["textures/goldbuddha.png"]
+MakeNamedMaterial "Artwork"
+        "string type" [ "matte" ] "rgb Kd" [ 0.65 0.65 0.65 ] 
+
+# baseboard
+MakeNamedMaterial "Paint - White Gloss"
+        "string type" [ "matte" ] "rgb Kd" [ 0.32 0.32 0.32 ] 
+
+
+Include "geometry_scaled.pbrt"
+
+# extra walls
+
+# AttributeBegin
+# NamedMaterial "Paint - White Matt"
+# # right: x = -6.5 plane
+# Shape "trianglemesh" "integer indices" [0 1 2 0 2 3 ]
+#     "point P" [ -6.5 -10 -2   -6.5  10 -2   -6.5 10 7   -6.5 -10 7 ]
+# # back: y = -9 plane
+# Shape "trianglemesh" "integer indices" [0 1 2 0 2 3]
+#     "point P" [ -10 -9 -2   10 -9 -2  10 -9 7  -10 -9 7 ]
+# AttributeEnd
+
+WorldEnd

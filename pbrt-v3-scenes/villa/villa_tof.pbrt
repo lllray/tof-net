@@ -1,0 +1,29 @@
+Scale -1 1 1
+# Translate 0 0 1
+LookAt 10.2391166687 5.0139517784 3.7599999905
+        11.2326469421 5.1700000763 3.7599999905
+        0 0 1
+Camera "perspective" 
+        "float fov" [ 50 ] 
+
+Film "image" 
+        "integer xresolution" [ 320 ] 
+        "integer yresolution" [ 240 ] 
+        "string filename" "villa.exr"
+
+Sampler "random" "integer pixelsamples" [64]
+
+WorldBegin
+
+Scale 0.5 0.5 0.5
+
+AttributeBegin
+    CoordSysTransform "camera"
+    LightSource "point" "color I" [ 100 100 100 ]
+AttributeEnd
+
+Include "materials_tof.pbrt"
+
+Include "geometry.pbrt"
+
+WorldEnd

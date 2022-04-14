@@ -1,0 +1,822 @@
+MakeNamedMaterial "09.1" "string type" "matte"
+MakeNamedMaterial "ABS Poly - High  Polish" "string type" "matte"
+MakeNamedMaterial "Aluminium " "string type" "matte"
+MakeNamedMaterial "BLUE_mix" "string type" "matte" "color Kd" [ 0 0 0] # emitter
+MakeNamedMaterial "BOLTS" "string type" "matte"
+MakeNamedMaterial "CONTENT_mix" "string type" "matte"
+MakeNamedMaterial "Carbonfibre V2"
+     "string type" "uber"
+     "rgb Kd" [.05 .05 .05 ]
+     "rgb Ks" [.2 .2 .2]
+     "float roughness" .01
+MakeNamedMaterial "FIRST-KICK-LIGHT" "string type" "matte"
+MakeNamedMaterial "FLOOR-CLICKER" "string type" "matte"
+MakeNamedMaterial "FLOOR-CLICKER2" "string type" "matte"
+MakeNamedMaterial "FLOOR-WAVE FINAL" "string type" "matte"
+MakeNamedMaterial "FLOOR_CLICKER2" "string type" "matte"
+MakeNamedMaterial "GL-10" "string type" "matte"
+MakeNamedMaterial "GL-13" "string type" "matte"
+MakeNamedMaterial "GL-14" "string type" "matte" "texture Kd" "GL14-color"
+MakeNamedMaterial "GL-15" "string type" "matte"
+MakeNamedMaterial "GL-18" "string type" "matte"
+MakeNamedMaterial "GL-2" "string type" "matte"
+MakeNamedMaterial "GL-3" "string type" "matte"
+MakeNamedMaterial "GL-6" "string type" "matte"
+MakeNamedMaterial "GL-7" "string type" "matte"
+MakeNamedMaterial "LIGHTTOWER" "string type" "matte"
+MakeNamedMaterial "MULTI-DOOR-1" "string type" "matte"
+MakeNamedMaterial "MULTI-DOOR-2" "string type" "matte"
+MakeNamedMaterial "OctSpecular" "string type" "matte"
+MakeNamedMaterial "Plastic_Blue" "string type" "matte"
+MakeNamedMaterial "SCREEN REFLECTIONS" "string type" "mirror" "color Kr" [.3 .3 .3]
+MakeNamedMaterial "SMOOTHED" "string type" "matte"
+MakeNamedMaterial "WHITE_mix (three)" "string type" "matte" "color Kd" [ 0 0 0]
+MakeNamedMaterial "_Glossy Material"
+     "string type" "uber"
+     "rgb Kd" [.05 .05 .05 ]
+     "rgb Ks" [.2 .2 .2]
+     "float roughness" .01
+
+MakeNamedMaterial "accent- simple kick" "string type" "matte" "color Kd" [ 0 0 0 ] # emitter
+MakeNamedMaterial "accent-THREE (Lt)" "string type" "matte" "color Kd" [ 0 0 0]
+MakeNamedMaterial "accent-bighead" "string type" "matte" "color Kd" [ 0 0 0]
+MakeNamedMaterial "accent-floor clickers" "string type" "matte" "color Kd" [ 0 0 0]
+MakeNamedMaterial "accent-kick" "string type" "matte" "color Kd" [ 0 0 0] # emitter
+MakeNamedMaterial "bm" "string type" "matte"
+MakeNamedMaterial "brushed-dirt" "string type" "matte"
+MakeNamedMaterial "chromed steel 1" "string type" "matte"
+MakeNamedMaterial "diag" "string type" "matte"
+MakeNamedMaterial "dull two" "string type" "matte"
+MakeNamedMaterial "floor screen-2" "string type" "matte"
+MakeNamedMaterial "floor" "string type" "matte"
+MakeNamedMaterial "glass" "string type" "matte"
+MakeNamedMaterial "multi-arm" "string type" "matte"
+MakeNamedMaterial "multi-arm-2 NO DETAILS" "string type" "matte"
+MakeNamedMaterial "multi-arm-3" "string type" "matte"
+MakeNamedMaterial "multi-arm-4" "string type" "matte"
+MakeNamedMaterial "multi-arm-PAY" "string type" "matte"
+MakeNamedMaterial "new metal" "string type" "matte"
+MakeNamedMaterial "new metal-lighter" "string type" "matte"
+MakeNamedMaterial "pryramid" "string type" "matte"
+MakeNamedMaterial "side- blue" "string type" "matte" "color Kd" [ 0 0 0] # emitter
+
+
+MakeNamedMaterial "chinese-one"
+        "float uroughness" [ 0.1 ] 
+        "float vroughness" [ 0.1 ] 
+        "string type" [ "substrate" ] 
+        "texture Kd" [ "chinese-one-color" ] 
+        "rgb Ks" [ 0.2 .2 .2 ] 
+MakeNamedMaterial "chinese-two"
+        "float uroughness" [ 0.1 ] 
+        "float vroughness" [ 0.1 ] 
+        "string type" [ "substrate" ] 
+        "texture Kd" [ "chinese-two-color" ] 
+        "rgb Ks" [ 0.2 .2 .2 ] 
+MakeNamedMaterial "chinese-four"
+        "float uroughness" [ 0.1 ] 
+        "float vroughness" [ 0.1 ] 
+        "string type" [ "substrate" ] 
+        "texture Kd" [ "chinese-four-color" ] 
+        "rgb Ks" [ 0.2 .2 .2 ] 
+
+
+MakeNamedMaterial "decal" 
+        "float uroughness" [ 0.00100000005 ] 
+        "float vroughness" [ 0.00100000005 ] 
+        "string type" [ "substrate" ] 
+        "texture Kd" [ "c4d|decal|Arnold_Shader-color" ] 
+        "rgb Ks" [ 0.529999971 0.529999971 0.529999971 ] 
+MakeNamedMaterial "light tower" 
+        "string type" [ "substrate" ] 
+        "texture uroughness" [ "c4d|light_tower|Arnold_Shader-float" ] 
+        "texture vroughness" [ "c4d|light_tower|Arnold_Shader-float" ] 
+        "rgb Ks" [ 0.189999998 0.189999998 0.189999998 ] 
+        "rgb Kd" [ .7 .7 .7 ]
+MakeNamedMaterial "OctGlossy.2" 
+        "float uroughness" [ 0.00100000005 ] 
+        "float vroughness" [ 0.00100000005 ] 
+        "string type" [ "substrate" ] 
+        "texture Kd" [ "c4d|OctGlossy.2|Arnold_Shader-color" ] 
+        "rgb Ks" [ 0.529999971 0.529999971 0.529999971 ] 
+MakeNamedMaterial "OctGlossy" 
+        "float uroughness" [ 0.100000001 ] 
+        "float vroughness" [ 0.100000001 ] 
+        "string type" [ "substrate" ] 
+        "texture Kd" [ "c4d|OctGlossy|Arnold_Shader-color" ] 
+        "rgb Ks" [ 0.529999971 0.529999971 0.529999971 ] 
+MakeNamedMaterial "accent-THREE" 
+        "string type" [ "matte" ]  "color Kd" [0 0 0] # emitter
+
+MakeNamedMaterial "full -scratched" 
+        "string type" [ "substrate" ] 
+        "texture uroughness" [ "c4d|full_-scratched|Arnold_Shader-float" ] 
+        "texture vroughness" [ "c4d|full_-scratched|Arnold_Shader-float" ] 
+        "rgb Kd" [ 0.162646994 0.162646994 0.162646994 ] 
+        "rgb Ks" [ 0.879999995 0.879999995 0.879999995 ] 
+MakeNamedMaterial "black metal" 
+        "string type" [ "substrate" ] 
+        "texture uroughness" [ "c4d|black_metal|Arnold_Shader-float" ] 
+        "texture vroughness" [ "c4d|black_metal|Arnold_Shader-float" ] 
+        "rgb Kd" [ 0.0469640009 0.0469640009 0.0469640009 ] 
+        "rgb Ks" [ 0.370000005 0.370000005 0.370000005 ] 
+MakeNamedMaterial "redtriang" 
+        "float uroughness" [ 0.00100000005 ] 
+        "float vroughness" [ 0.00100000005 ] 
+        "string type" [ "substrate" ] 
+        "texture Kd" [ "c4d|redtriang|Arnold_Shader-color" ] 
+        "rgb Ks" [ 0.430000007 0.430000007 0.430000007 ] 
+MakeNamedMaterial "emmobart" 
+        "float uroughness" [ 0.00100000005 ] 
+        "float vroughness" [ 0.00100000005 ] 
+        "string type" [ "substrate" ] 
+        "texture Kd" [ "c4d|emmobart|Arnold_Shader-color" ] 
+        "rgb Ks" [ 0.529999971 0.529999971 0.529999971 ] 
+MakeNamedMaterial "OctGlossy.1" 
+        "float uroughness" [ 0.00100000005 ] 
+        "float vroughness" [ 0.00100000005 ] 
+        "string type" [ "substrate" ] 
+        "texture Kd" [ "c4d|OctGlossy.1|Arnold_Shader-color" ] 
+        "rgb Ks" [ 0.529999971 0.529999971 0.529999971 ] 
+MakeNamedMaterial "09" 
+        "float uroughness" [ 0.00100000005 ] 
+        "float vroughness" [ 0.00100000005 ] 
+        "string type" [ "substrate" ] 
+        "texture Kd" [ "c4d|09|Arnold_Shader-color" ] 
+        "rgb Ks" [ 0.529999971 0.529999971 0.529999971 ] 
+MakeNamedMaterial "7890" 
+        "float uroughness" [ 0.00100000005 ] 
+        "float vroughness" [ 0.00100000005 ] 
+        "string type" [ "substrate" ] 
+        "texture Kd" [ "c4d|7890|Arnold_Shader-color" ] 
+        "rgb Ks" [ 0.529999971 0.529999971 0.529999971 ] 
+MakeNamedMaterial "grey steel" 
+        "string type" [ "substrate" ] 
+        "texture uroughness" [ "c4d|grey_steel|Arnold_Shader-float" ] 
+        "texture vroughness" [ "c4d|grey_steel|Arnold_Shader-float" ] 
+        "rgb Kd" [ 0.00598100014 0.00598100014 0.00598100014 ] 
+        "rgb Ks" [ 0.370000005 0.370000005 0.370000005 ] 
+MakeNamedMaterial "room" 
+        "float uroughness" [ 0.0456900001 ] 
+        "float vroughness" [ 0.0456900001 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.0019739999 0.0019739999 0.0019739999 ] 
+        "rgb Ks" [ 0.300000012 0.300000012 0.300000012 ] 
+MakeNamedMaterial "TRIANGLE" 
+        "string type" [ "substrate" ] 
+        "texture uroughness" [ "c4d|TRIANGLE|Arnold_Shader-float" ] 
+        "texture vroughness" [ "c4d|TRIANGLE|Arnold_Shader-float" ] 
+        "rgb Kd" [ 0.0469640009 0.0469640009 0.0469640009 ] 
+        "rgb Ks" [ 0.370000005 0.370000005 0.370000005 ] 
+MakeNamedMaterial "Alluminio Piastre" 
+        "float roughness" [ 0.00100000005 ] 
+        "string type" [ "metal" ] 
+        "rgb eta" [ 1.65394092 0.878498793 0.520122647 ] 
+        "rgb k" [ 9.20430565 6.25620461 4.82674885 ] 
+MakeNamedMaterial "dull" 
+        "float uroughness" [ 0.0586900003 ] 
+        "float vroughness" [ 0.0586900003 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.0019739999 0.0019739999 0.0019739999 ] 
+        "rgb Ks" [ 0.150000006 0.150000006 0.150000006 ] 
+MakeNamedMaterial "canisters" 
+        "string type" [ "substrate" ] 
+        "texture Kd" [ "c4d|canisters|Arnold_Shader-color" ] 
+        "texture uroughness" [ "c4d|canisters|Arnold_Shader-float" ] 
+        "texture vroughness" [ "c4d|canisters|Arnold_Shader-float" ] 
+        "rgb Ks" [ 0.829999983 0.829999983 0.829999983 ] 
+MakeNamedMaterial "kaution" 
+        "float uroughness" [ 0.00100000005 ] 
+        "float vroughness" [ 0.00100000005 ] 
+        "string type" [ "substrate" ] 
+        "texture Kd" [ "c4d|kaution|Arnold_Shader-color" ] 
+        "rgb Ks" [ 0.529999971 0.529999971 0.529999971 ] 
+MakeNamedMaterial "multi-arm-2" 
+        "string type" [ "substrate" ] 
+        "texture uroughness" [ "c4d|multi-arm-2|Arnold_Shader-float" ] 
+        "texture vroughness" [ "c4d|multi-arm-2|Arnold_Shader-float" ] 
+        "rgb Ks" [ 0.189999998 0.189999998 0.189999998 ] 
+MakeNamedMaterial "caution" 
+        "float uroughness" [ 0.00100000005 ] 
+        "float vroughness" [ 0.00100000005 ] 
+        "string type" [ "substrate" ] 
+        "texture Kd" [ "c4d|caution|Arnold_Shader-color" ] 
+        "rgb Ks" [ 0.529999971 0.529999971 0.529999971 ] 
+MakeNamedMaterial "Alluminio-2" 
+        "float roughness" [ 0.00999999978 ] 
+        "string type" [ "metal" ] 
+        "rgb eta" [ 1.65394092 0.878498793 0.520122647 ] 
+        "rgb k" [ 9.20430565 6.25620461 4.82674885 ] 
+MakeNamedMaterial "accent-ONE" 
+        "string type" [ "matte" ]  "color Kd" [ 0 0 0] # emitter
+
+MakeNamedMaterial "Orey-jack" 
+        "string type" [ "substrate" ] 
+        "texture uroughness" [ "c4d|Orey-jack|Arnold_Shader-float" ] 
+        "texture vroughness" [ "c4d|Orey-jack|Arnold_Shader-float" ] 
+        "rgb Ks" [ 0.100000001 0.100000001 0.100000001 ] 
+        "rgb Kd" [ .2 .2 .2]
+
+MakeNamedMaterial "LIGHTTOWER-1" 
+        "float uroughness" [ 0.0299999993 ] 
+        "float vroughness" [ 0.0299999993 ] 
+        "string type" [ "substrate" ] 
+        "texture Kd" [ "c4d|LIGHTTOWER-1|ramp_rgb-color" ] 
+        "rgb Ks" [ 0.868898988 0.846738994 0.792169988 ] 
+MakeNamedMaterial "FULL BLACK" 
+        "float uroughness" [ 0.0299999993 ] 
+        "float vroughness" [ 0.0299999993 ] 
+        "string type" [ "substrate" ] 
+        "texture Kd" [ "c4d|FULL_BLACK|ramp_rgb-color" ] 
+        "rgb Ks" [ 0.868898988 0.846738994 0.792169988 ] 
+MakeNamedMaterial "85" 
+        "float uroughness" [ 0.00100000005 ] 
+        "float vroughness" [ 0.00100000005 ] 
+        "string type" [ "substrate" ] 
+        "texture Kd" [ "c4d|85|Arnold_Shader-color" ] 
+        "rgb Ks" [ 0.529999971 0.529999971 0.529999971 ] 
+MakeNamedMaterial "SIMPLE KICK" 
+        "float uroughness" [ 0.0586900003 ] 
+        "float vroughness" [ 0.0586900003 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.848088026 0.848088026 0.848088026 ] 
+        "rgb Ks" [ 0.629999995 0.629999995 0.629999995 ] 
+MakeNamedMaterial "accent- SIMPLE KICK" 
+        "string type" [ "substrate" ] 
+        "texture Kd" [ "c4d|accent-_SIMPLE_KICK|ramp_rgb-color" ] 
+        "texture uroughness" [ "c4d|accent-_SIMPLE_KICK|Arnold_Shader-float" ] 
+        "texture vroughness" [ "c4d|accent-_SIMPLE_KICK|Arnold_Shader-float" ] 
+        "rgb Ks" [ 0.868898988 0.846738994 0.792169988 ] 
+MakeNamedMaterial "accent-ONE (KICK)" 
+        "string type" [ "substrate" ] 
+        "texture uroughness" [ "c4d|accent-ONE_(KICK)|Arnold_Shader-float" ] 
+        "texture vroughness" [ "c4d|accent-ONE_(KICK)|Arnold_Shader-float" ] 
+        "rgb Ks" [ 1 1 1 ] 
+MakeNamedMaterial "black metal - BASE" 
+        "string type" [ "substrate" ] 
+        "texture uroughness" [ "c4d|black_metal_-_BASE|Arnold_Shader-float" ] 
+        "texture vroughness" [ "c4d|black_metal_-_BASE|Arnold_Shader-float" ] 
+        "rgb Kd" [ 0.0469640009 0.0469640009 0.0469640009 ] 
+        "rgb Ks" [ 0.370000005 0.370000005 0.370000005 ] 
+MakeNamedMaterial "Orey" 
+        "string type" [ "substrate" ] 
+        "texture uroughness" [ "c4d|Orey|Arnold_Shader-float" ] 
+        "texture vroughness" [ "c4d|Orey|Arnold_Shader-float" ] 
+        "rgb Ks" [ 0.189999998 0.189999998 0.189999998 ] 
+MakeNamedMaterial "pre-beam" 
+        "string type" [ "substrate" ] 
+        "texture Kd" [ "c4d|pre-beam|ramp_rgb-color" ] 
+        "texture uroughness" [ "c4d|pre-beam|Arnold_Shader-float" ] 
+        "texture vroughness" [ "c4d|pre-beam|Arnold_Shader-float" ] 
+        "rgb Ks" [ 0.510077 0.462673008 0.354604989 ] 
+MakeNamedMaterial "ceiling-1.1" 
+        "float uroughness" [ 0.0900000036 ] 
+        "float vroughness" [ 0.0900000036 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.699999988 0.699999988 0.699999988 ] 
+        "rgb Ks" [ 0.400000006 0.400000006 0.400000006 ] 
+MakeNamedMaterial "OctGlossy.4" 
+        "float uroughness" [ 0.00400000019 ] 
+        "float vroughness" [ 0.00400000019 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.233603001 0.233603001 0.233603001 ] 
+        "rgb Ks" [ 0.99000001 0.99000001 0.99000001 ] 
+MakeNamedMaterial "floor laser-1" 
+        "float uroughness" [ 0.0900000036 ] 
+        "float vroughness" [ 0.0900000036 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.699999988 0.699999988 0.699999988 ] 
+        "rgb Ks" [ 0.400000006 0.400000006 0.400000006 ] 
+MakeNamedMaterial "floor laser-2" 
+        "float uroughness" [ 0.0900000036 ] 
+        "float vroughness" [ 0.0900000036 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.699999988 0.699999988 0.699999988 ] 
+        "rgb Ks" [ 0.400000006 0.400000006 0.400000006 ] 
+MakeNamedMaterial "OctGlossy.3" 
+        "float uroughness" [ 0.00400000019 ] 
+        "float vroughness" [ 0.00400000019 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.233603001 0.233603001 0.233603001 ] 
+        "rgb Ks" [ 0.99000001 0.99000001 0.99000001 ] 
+MakeNamedMaterial "Orey-jack base" 
+        "string type" [ "substrate" ] 
+        "texture uroughness" [ "c4d|Orey-jack_base|Arnold_Shader-float" ] 
+        "texture vroughness" [ "c4d|Orey-jack_base|Arnold_Shader-float" ] 
+        "rgb Ks" [ 0.409999996 0.409999996 0.409999996 ] 
+        "rgb Kd" [ .05 .05 .05]
+
+MakeNamedMaterial "BASE ROOM" 
+#        "string type" [ "metal" ] 
+#        "rgb eta" [ 1.65394092 0.878498793 0.520122647 ] 
+#        "rgb k" [ 9.20430565 6.25620461 4.82674885 ] 
+#        "float roughness" [ 0.0005 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.4 .4 .4 ] 
+        "rgb Ks" [ 0.5 .5 .5 ] 
+        "float uroughness" [ 0.000500000024 ] 
+        "float vroughness" [ 0.000500000024 ] 
+        "texture bumpmap" "room-bump"
+
+MakeNamedMaterial "ceiling-3" 
+        "string type" [ "substrate" ] 
+        "texture uroughness" [ "c4d|ceiling-3|Arnold_Shader-float" ] 
+        "texture vroughness" [ "c4d|ceiling-3|Arnold_Shader-float" ] 
+        "rgb Kd" [ 0.295700014 0.295700014 0.295700014 ] 
+        "rgb Ks" [ 0.330000013 0.330000013 0.330000013 ] 
+MakeNamedMaterial "accent-bigger" 
+        "string type" [ "matte" ]  "color Kd" [ 0 0 0]
+MakeNamedMaterial "accent-TWO" 
+        "string type" [ "matte" ]  "color Kd" [ 0 0 0 ] # emitter
+
+MakeNamedMaterial "Corrugated Steel (bump v4)" 
+        "float uroughness" [ 0.0466899984 ] 
+        "float vroughness" [ 0.0466899984 ] 
+        "string type" [ "substrate" ] 
+        "texture Ks" [ "c4d|Corrugated_Steel_(bump_v4)|Arnold_Shader-color" ] 
+MakeNamedMaterial "elec" 
+        "float uroughness" [ 0.00100000005 ] 
+        "float vroughness" [ 0.00100000005 ] 
+        "string type" [ "substrate" ] 
+        "texture Kd" [ "c4d|elec|Arnold_Shader-color" ] 
+        "rgb Ks" [ 0.529999971 0.529999971 0.529999971 ] 
+MakeNamedMaterial "DOORS" 
+        "string type" [ "substrate" ] 
+        "texture uroughness" [ "c4d|DOORS|Arnold_Shader-float" ] 
+        "texture vroughness" [ "c4d|DOORS|Arnold_Shader-float" ] 
+        "rgb Kd" [ 0.827570975 0.827570975 0.827570975 ] 
+        "rgb Ks" [ 0.1 .1 .1 ] 
+MakeNamedMaterial "ceiling-1" 
+        "string type" [ "substrate" ] 
+        "texture uroughness" [ "c4d|ceiling-1|Arnold_Shader-float" ] 
+        "texture vroughness" [ "c4d|ceiling-1|Arnold_Shader-float" ] 
+        "rgb Kd" [ 0.933107018 0.933107018 0.933107018 ] 
+        "rgb Ks" [ 0.170000002 0.170000002 0.170000002 ] 
+MakeNamedMaterial "ceiling-2" 
+        "string type" [ "substrate" ] 
+        "texture uroughness" [ "c4d|ceiling-2|Arnold_Shader-float" ] 
+        "texture vroughness" [ "c4d|ceiling-2|Arnold_Shader-float" ] 
+        "rgb Kd" [ 0.433880001 0.433880001 0.433880001 ] 
+        "rgb Ks" [ 0.170000002 0.170000002 0.170000002 ] 
+MakeNamedMaterial "white-no dirt" 
+        "string type" [ "substrate" ] 
+        "texture uroughness" [ "c4d|white-no_dirt|Arnold_Shader-float" ] 
+        "texture vroughness" [ "c4d|white-no_dirt|Arnold_Shader-float" ] 
+        "rgb Kd" [ 0.933107018 0.933107018 0.933107018 ] 
+        "rgb Ks" [ 0.170000002 0.170000002 0.170000002 ] 
+MakeNamedMaterial "stomp-top" 
+        "float uroughness" [ 0.0656900033 ] 
+        "float vroughness" [ 0.0656900033 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.933107018 0.933107018 0.933107018 ] 
+        "rgb Ks" [ 0.400000006 0.400000006 0.400000006 ] 
+MakeNamedMaterial "stomp-bottom" 
+        "float uroughness" [ 0.0346900001 ] 
+        "float vroughness" [ 0.0346900001 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 1 1 1 ] 
+        "rgb Ks" [ 0.449999988 0.449999988 0.449999988 ] 
+MakeNamedMaterial "SIDE-SMASH-1" 
+        "string type" [ "substrate" ] 
+        "texture uroughness" [ "c4d|SIDE-SMASH-1|Arnold_Shader-float" ] 
+        "texture vroughness" [ "c4d|SIDE-SMASH-1|Arnold_Shader-float" ] 
+        "rgb Ks" [ 0.189999998 0.189999998 0.189999998 ] 
+MakeNamedMaterial "SIDE-SMASH-2" 
+        "string type" [ "substrate" ] 
+        "texture uroughness" [ "c4d|SIDE-SMASH-2|Arnold_Shader-float" ] 
+        "texture vroughness" [ "c4d|SIDE-SMASH-2|Arnold_Shader-float" ] 
+        "rgb Ks" [ 0.189999998 0.189999998 0.189999998 ] 
+MakeNamedMaterial "SIDESMASHER" 
+        "string type" [ "substrate" ] 
+        "texture Kd" [ "c4d|SIDESMASHER|ramp_rgb-color" ] 
+        "texture uroughness" [ "c4d|SIDESMASHER|Arnold_Shader-float" ] 
+        "texture vroughness" [ "c4d|SIDESMASHER|Arnold_Shader-float" ] 
+        "rgb Ks" [ 0.868898988 0.846738994 0.792169988 ] 
+MakeNamedMaterial "accent- FOUR" 
+        "string type" [ "matte" ]  "color Kd" [ 0 0 0 ] # it's an emitter
+
+MakeNamedMaterial "dull-lighter" 
+        "string type" [ "substrate" ] 
+        "texture uroughness" [ "c4d|dull-lighter|Arnold_Shader-float" ] 
+        "texture vroughness" [ "c4d|dull-lighter|Arnold_Shader-float" ] 
+        "rgb Kd" [ 0.223414004 0.223414004 0.223414004 ] 
+        "rgb Ks" [ 0.0299999993 0.0299999993 0.0299999993 ] 
+MakeNamedMaterial "room-no bump" 
+        "string type" [ "substrate" ] 
+        "texture uroughness" [ "c4d|room-no_bump|Arnold_Shader-float" ] 
+        "texture vroughness" [ "c4d|room-no_bump|Arnold_Shader-float" ] 
+        "rgb Kd" [ 0.0643220022 0.0643220022 0.0643220022 ] 
+        "rgb Ks" [ 0.109999999 0.109999999 0.109999999 ] 
+MakeNamedMaterial "standard" 
+        "float uroughness" [ 0.0900000036 ] 
+        "float vroughness" [ 0.0900000036 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.699999988 0.699999988 0.699999988 ] 
+        "rgb Ks" [ 0.5 0.5 0.5 ] 
+MakeNamedMaterial " Glossy Material" 
+        "float uroughness" [ 0.061999999 ] 
+        "float vroughness" [ 0.061999999 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.0331050009 0.0331050009 0.0331050009 ] 
+        "rgb Ks" [ 0.50999999 0.50999999 0.50999999 ] 
+MakeNamedMaterial "SIDE -white" 
+        "float uroughness" [ 0.0466899984 ] 
+        "float vroughness" [ 0.0466899984 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.0500000007 0.0500000007 0.0500000007 ] 
+        "rgb Ks" [ 0 0 0 ] 
+MakeNamedMaterial "standard 02" 
+        "float uroughness" [ 0.050999999 ] 
+        "float vroughness" [ 0.050999999 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.062043 0.062043 0.062043 ] 
+        "rgb Ks" [ 0.5 0.5 0.5 ] 
+MakeNamedMaterial "MAIN SHAFT" 
+        "float uroughness" [ 0.00499999989 ] 
+        "float vroughness" [ 0.00499999989 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.0683849975 0.0683849975 0.0683849975 ] 
+        "rgb Ks" [ 0.239999995 0.239999995 0.239999995 ] 
+MakeNamedMaterial "black metal bas replace" 
+        "float uroughness" [ 0.0336900018 ] 
+        "float vroughness" [ 0.0336900018 ] 
+        "string type" [ "substrate" ] 
+        "rgb Ks" [ 0.140000001 0.140000001 0.140000001 ] 
+MakeNamedMaterial "perfect plastic" 
+        "float uroughness" [ 0.051690001 ] 
+        "float vroughness" [ 0.051690001 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.0302639995 0.0302639995 0.0302639995 ] 
+        "rgb Ks" [ 0.100000001 0.100000001 0.100000001 ] 
+MakeNamedMaterial "Alluminio Piastre.1" 
+        "float uroughness" [ 0.0586900003 ] 
+        "float vroughness" [ 0.0586900003 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.0121560004 0.0121560004 0.0121560004 ] 
+        "rgb Ks" [ 0.829999983 0.829999983 0.829999983 ] 
+MakeNamedMaterial "dull-lighter.1" 
+        "float uroughness" [ 0.0466899984 ] 
+        "float vroughness" [ 0.0466899984 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.233022004 0.233022004 0.233022004 ] 
+        "rgb Ks" [ 0 0 0 ] 
+MakeNamedMaterial "OctGlossy.11" 
+        "float uroughness" [ 0.0480000004 ] 
+        "float vroughness" [ 0.0480000004 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.491905004 0.491905004 0.491905004 ] 
+        "rgb Ks" [ 1 1 1 ] 
+MakeNamedMaterial "tube" 
+        "float uroughness" [ 0.0529999994 ] 
+        "float vroughness" [ 0.0529999994 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.139984995 0.139984995 0.139984995 ] 
+        "rgb Ks" [ 0.185102001 0.185102001 0.185102001 ] 
+MakeNamedMaterial "full scratched repl" 
+        "float uroughness" [ 0.00200000009 ] 
+        "float vroughness" [ 0.00200000009 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.233603001 0.233603001 0.233603001 ] 
+        "rgb Ks" [ 0.6 0.6 0.6 ] 
+MakeNamedMaterial "standard 03" 
+        "float uroughness" [ 0.0946900025 ] 
+        "float vroughness" [ 0.0946900025 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.284646988 0.284646988 0.284646988 ] 
+        "rgb Ks" [ 0.829999983 0.829999983 0.829999983 ] 
+MakeNamedMaterial "NEW-1" 
+        "float uroughness" [ 0.0299999993 ] 
+        "float vroughness" [ 0.0299999993 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ .5 .5 .5 ] 
+        "rgb Ks" [ 0.3 .3 .3 ] 
+MakeNamedMaterial "SIDE ACCENTS" 
+        "string type" [ "matte" ]  "color Kd" [ 0 0 0]
+
+MakeNamedMaterial "SIDE -white.1" 
+        "float uroughness" [ 0.0466899984 ] 
+        "float vroughness" [ 0.0466899984 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0 0 0 ] 
+        "rgb Ks" [ 0 0 0 ] 
+MakeNamedMaterial "room-no bump.1" 
+        "float uroughness" [ 0.051690001 ] 
+        "float vroughness" [ 0.051690001 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.0302639995 0.0302639995 0.0302639995 ] 
+        "rgb Ks" [ 0.129999995 0.129999995 0.129999995 ] 
+MakeNamedMaterial "standard 05" 
+        "float uroughness" [ 0.0476900004 ] 
+        "float vroughness" [ 0.0476900004 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.00853999984 0.00853999984 0.00853999984 ] 
+        "rgb Ks" [ 0.300000012 0.300000012 0.300000012 ] 
+MakeNamedMaterial "grey steel.1" 
+        "string type" [ "substrate" ] 
+        "texture uroughness" [ "c4d|grey_steel.1|Arnold_Shader_1-float" ] 
+        "texture vroughness" [ "c4d|grey_steel.1|Arnold_Shader_1-float" ] 
+        "rgb Kd" [ 0.0384779982 0.0384779982 0.0384779982 ] 
+        "rgb Ks" [ 0.100000001 0.100000001 0.100000001 ] 
+MakeNamedMaterial "OctGlossy.8" 
+        "float uroughness" [ 0.0610000007 ] 
+        "float vroughness" [ 0.0610000007 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.200000003 0.200000003 0.200000003 ] 
+        "rgb Ks" [ 0.6 0.6 0.6 ] 
+MakeNamedMaterial "OctGlossy.9" 
+        "float uroughness" [ 0.0610000007 ] 
+        "float vroughness" [ 0.0610000007 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.200000003 0.200000003 0.200000003 ] 
+        "rgb Ks" [ 0.6 0.6 0.6 ] 
+MakeNamedMaterial "full -scratched.1" 
+        "float uroughness" [ 0.00400000019 ] 
+        "float vroughness" [ 0.00400000019 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.233603001 0.233603001 0.233603001 ] 
+        "rgb Ks" [ 0.6 0.6 0.6 ] 
+MakeNamedMaterial "FLOOR.1" 
+        "float uroughness" [ 0.00100000005 ] 
+        "float vroughness" [ 0.00100000005 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.00309600006 0.00309600006 0.00309600006 ] 
+        "rgb Ks" [ 0.25 0.25 0.25 ] 
+MakeNamedMaterial "gates blurred" 
+        "float uroughness" [ 0.0670000017 ] 
+        "float vroughness" [ 0.0670000017 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.0356130004 0.0356130004 0.0356130004 ] 
+        "rgb Ks" [ 0.649999976 0.649999976 0.649999976 ] 
+MakeNamedMaterial "orange emitter" 
+        "string type" [ "substrate" ] 
+        "texture Kd" [ "c4d|orange_emitter|ramp_rgb-color" ] 
+        "texture uroughness" [ "c4d|orange_emitter|Arnold_Shader-float" ] 
+        "texture vroughness" [ "c4d|orange_emitter|Arnold_Shader-float" ] 
+        "rgb Ks" [ 0.510077 0.462673008 0.354604989 ] 
+MakeNamedMaterial "OctGlossy.10" 
+        "float uroughness" [ 0.0526899993 ] 
+        "float vroughness" [ 0.0526899993 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.178866997 0.178866997 0.178866997 ] 
+        "rgb Ks" [ 0.930000007 0.930000007 0.930000007 ] 
+MakeNamedMaterial "clean" 
+        "float uroughness" [ 0.0299999993 ] 
+        "float vroughness" [ 0.0299999993 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 1 1 1 ] 
+        "rgb Ks" [ 1 1 1 ] 
+MakeNamedMaterial "KICKSHAFT" 
+        "float uroughness" [ 0.0199999996 ] 
+        "float vroughness" [ 0.0199999996 ] 
+        "string type" [ "substrate" ] 
+        "rgb Ks" [ 0.5 0.5 0.5 ] 
+MakeNamedMaterial "dull-lighter.2" 
+        "string type" [ "substrate" ] 
+        "texture Kd" [ "c4d|dull-lighter.2|ramp_rgb-color" ] 
+        "texture uroughness" [ "c4d|dull-lighter.2|Arnold_Shader-float" ] 
+        "texture vroughness" [ "c4d|dull-lighter.2|Arnold_Shader-float" ] 
+        "rgb Ks" [ 1 1 1 ] 
+MakeNamedMaterial " Glossy Material.1" 
+        "float uroughness" [ 0.061999999 ] 
+        "float vroughness" [ 0.061999999 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.0331050009 0.0331050009 0.0331050009 ] 
+        "rgb Ks" [ 0.50999999 0.50999999 0.50999999 ] 
+MakeNamedMaterial "white emitter" 
+        "float uroughness" [ 0.0466899984 ] 
+        "float vroughness" [ 0.0466899984 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.376765013 0.376765013 0.376765013 ] 
+        "rgb Ks" [ 0 0 0 ] 
+MakeNamedMaterial "blue gradientemitter" 
+        "float uroughness" [ 0.00999999978 ] 
+        "float vroughness" [ 0.00999999978 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.0432340018 1 0.971054018 ] 
+        "rgb Ks" [ 0.300000012 0.300000012 0.300000012 ] 
+MakeNamedMaterial "room.1" 
+        "float uroughness" [ 0.061999999 ] 
+        "float vroughness" [ 0.061999999 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.0331050009 0.0331050009 0.0331050009 ] 
+        "rgb Ks" [ 0.50999999 0.50999999 0.50999999 ] 
+MakeNamedMaterial "BLUE mix(first).1" 
+        "string type" [ "substrate" ] 
+        "texture uroughness" [ "c4d|BLUE_mix(first).1|Arnold_Shader_1-float" ] 
+        "texture vroughness" [ "c4d|BLUE_mix(first).1|Arnold_Shader_1-float" ] 
+        "rgb Ks" [ 0.868898988 0.846738994 0.792169988 ] 
+MakeNamedMaterial "BLUE mix(first).2" 
+        "float uroughness" [ 0.0199999996 ] 
+        "float vroughness" [ 0.0199999996 ] 
+        "string type" [ "substrate" ] 
+        "rgb Ks" [ 0.868898988 0.846738994 0.792169988 ] 
+MakeNamedMaterial "grey steel.2" 
+        "float uroughness" [ 0.0336900018 ] 
+        "float vroughness" [ 0.0336900018 ] 
+        "string type" [ "substrate" ] 
+        "rgb Ks" [ 0.140000001 0.140000001 0.140000001 ] 
+MakeNamedMaterial "CONTENT mix" 
+        "float uroughness" [ 0.00100000005 ] 
+        "float vroughness" [ 0.00100000005 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.00309600006 0.00309600006 0.00309600006 ] 
+        "rgb Ks" [ 0.25 0.25 0.25 ] 
+MakeNamedMaterial "sixmix-1" 
+        "float uroughness" [ 0.00100000005 ] 
+        "float vroughness" [ 0.00100000005 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.0432340018 1 0.971054018 ] 
+        "rgb Ks" [ 0.5 0.5 0.5 ] 
+MakeNamedMaterial "sixmix-2" 
+        "float uroughness" [ 0.02269 ] 
+        "float vroughness" [ 0.02269 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.0168670006 0.0168670006 0.0168670006 ] 
+        "rgb Ks" [ 0.280000001 0.280000001 0.280000001 ] 
+MakeNamedMaterial "floor screen -1" 
+        "float uroughness" [ 0.074000001 ] 
+        "float vroughness" [ 0.074000001 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 1 1 1 ] 
+        "rgb Ks" [ 0.720000029 0.720000029 0.720000029 ] 
+MakeNamedMaterial "warblemix-5" 
+        "float uroughness" [ 0.00100000005 ] 
+        "float vroughness" [ 0.00100000005 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.00309600006 0.00309600006 0.00309600006 ] 
+        "rgb Ks" [ 0.25 0.25 0.25 ] 
+MakeNamedMaterial "warblemix-4" 
+        "float uroughness" [ 0.00100000005 ] 
+        "float vroughness" [ 0.00100000005 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.00309600006 0.00309600006 0.00309600006 ] 
+        "rgb Ks" [ 0.25 0.25 0.25 ] 
+MakeNamedMaterial "warblemix-3" 
+        "float uroughness" [ 0.00100000005 ] 
+        "float vroughness" [ 0.00100000005 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.00309600006 0.00309600006 0.00309600006 ] 
+        "rgb Ks" [ 0.25 0.25 0.25 ] 
+MakeNamedMaterial "warblemix-2" 
+        "float uroughness" [ 0.00100000005 ] 
+        "float vroughness" [ 0.00100000005 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.00309600006 0.00309600006 0.00309600006 ] 
+        "rgb Ks" [ 0.25 0.25 0.25 ] 
+MakeNamedMaterial "warblemix-1" 
+        "float uroughness" [ 0.00100000005 ] 
+        "float vroughness" [ 0.00100000005 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.00309600006 0.00309600006 0.00309600006 ] 
+        "rgb Ks" [ 0.25 0.25 0.25 ] 
+MakeNamedMaterial "FLOOR" 
+        "float uroughness" [ 0.00499999989 ] 
+        "float vroughness" [ 0.00499999989 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.00232199999 0.00232199999 0.00232199999 ] 
+        "rgb Ks" [ 0.239999995 0.239999995 0.239999995 ] 
+MakeNamedMaterial "BLUE mix(last)" 
+        "float uroughness" [ 0.0466899984 ] 
+        "float vroughness" [ 0.0466899984 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.0432340018 1 0.971054018 ] 
+        "rgb Ks" [ 0 0 0 ] 
+MakeNamedMaterial "BLUE mix(mid)" 
+        "float uroughness" [ 0.00499999989 ] 
+        "float vroughness" [ 0.00499999989 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.00232199999 0.00232199999 0.00232199999 ] 
+        "rgb Ks" [ 0.239999995 0.239999995 0.239999995 ] 
+MakeNamedMaterial "BLUE mix(first)" 
+        "string type" [ "substrate" ] 
+        "texture Kd" [ "c4d|BLUE_mix(first)|ramp_rgb-color" ] 
+        "texture uroughness" [ "c4d|BLUE_mix(first)|Arnold_Shader-float" ] 
+        "texture vroughness" [ "c4d|BLUE_mix(first)|Arnold_Shader-float" ] 
+        "rgb Ks" [ 0.868898988 0.846738994 0.792169988 ] 
+MakeNamedMaterial "accent-SIMPLE KICK" 
+        "string type" [ "substrate" ] 
+        "texture Kd" [ "c4d|accent-SIMPLE_KICK|ramp_rgb-color" ] 
+        "texture uroughness" [ "c4d|accent-SIMPLE_KICK|Arnold_Shader-float" ] 
+        "texture vroughness" [ "c4d|accent-SIMPLE_KICK|Arnold_Shader-float" ] 
+        "rgb Ks" [ 0.347559988 0.338696003 0.316868007 ] 
+MakeNamedMaterial "OctGlossy.5" 
+        "float uroughness" [ 0.00100000005 ] 
+        "float vroughness" [ 0.00100000005 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.00309600006 0.00309600006 0.00309600006 ] 
+        "rgb Ks" [ 0.25 0.25 0.25 ] 
+MakeNamedMaterial "OctGlossy.7" 
+        "float uroughness" [ 0.0610000007 ] 
+        "float vroughness" [ 0.0610000007 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.154872 0.154872 0.154872 ] 
+        "rgb Ks" [ 0.0799999982 0.0799999982 0.0799999982 ] 
+MakeNamedMaterial "OctGlossy.6" 
+        "float uroughness" [ 0.0799999982 ] 
+        "float vroughness" [ 0.0799999982 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.699999988 0.699999988 0.699999988 ] 
+        "rgb Ks" [ 0.200000003 0.200000003 0.200000003 ] 
+MakeNamedMaterial "OctDiffuse" 
+        "string type" [ "matte" ] 
+        "rgb Kd" [ 0.376765013 0.376765013 0.376765013 ] 
+MakeNamedMaterial "side - white" 
+        "float uroughness" [ 0.0466899984 ] 
+        "float vroughness" [ 0.0466899984 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.376765013 0.376765013 0.376765013 ] 
+        "rgb Ks" [ 0 0 0 ] 
+MakeNamedMaterial "side- blue(first)" 
+        "float uroughness" [ 0.0466899984 ] 
+        "float vroughness" [ 0.0466899984 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.699999988 0.699999988 0.699999988 ] 
+        "rgb Ks" [ 0 0 0 ] 
+MakeNamedMaterial "stomp base" 
+        "float uroughness" [ 0.00100000005 ] 
+        "float vroughness" [ 0.00100000005 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.0116450004 0.0116450004 0.0116450004 ] 
+        "rgb Ks" [ 0.589999974 0.589999974 0.589999974 ] 
+MakeNamedMaterial "room.2" 
+        "float uroughness" [ 0.0336900018 ] 
+        "float vroughness" [ 0.0336900018 ] 
+        "string type" [ "substrate" ] 
+        "rgb Ks" [ 0.140000001 0.140000001 0.140000001 ] 
+MakeNamedMaterial "accent-lighttower" 
+        "string type" [ "matte" ]  "color Kd" [ 0 0 0]
+
+MakeNamedMaterial "accent-BIGGER" 
+        "string type" [ "matte" ]  "color Kd" [0 0 0 ]
+MakeNamedMaterial "buzzwing" 
+        "float uroughness" [ 0.0799999982 ] 
+        "float vroughness" [ 0.0799999982 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.699999988 0.699999988 0.699999988 ] 
+        "rgb Ks" [ 0.200000003 0.200000003 0.200000003 ] 
+MakeNamedMaterial "buzzmix-6" 
+        "float uroughness" [ 0.00499999989 ] 
+        "float vroughness" [ 0.00499999989 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.00232199999 0.00232199999 0.00232199999 ] 
+        "rgb Ks" [ 0.239999995 0.239999995 0.239999995 ] 
+MakeNamedMaterial " Glossy Material.2" 
+        "float uroughness" [ 0.051690001 ] 
+        "float vroughness" [ 0.051690001 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.0302639995 0.0302639995 0.0302639995 ] 
+        "rgb Ks" [ 0.129999995 0.129999995 0.129999995 ] 
+MakeNamedMaterial "buzzmix-7" 
+        "float uroughness" [ 0.00499999989 ] 
+        "float vroughness" [ 0.00499999989 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.00232199999 0.00232199999 0.00232199999 ] 
+        "rgb Ks" [ 0.239999995 0.239999995 0.239999995 ] 
+MakeNamedMaterial "stomp mid" 
+        "float uroughness" [ 0.0729999989 ] 
+        "float vroughness" [ 0.0729999989 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.491905004 0.491905004 0.491905004 ] 
+        "rgb Ks" [ 1 1 1 ] 
+MakeNamedMaterial "MULTI-DOOR-3" 
+        "float uroughness" [ 0.057 ] 
+        "float vroughness" [ 0.057 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.554221988 0.554221988 0.554221988 ] 
+        "rgb Ks" [ 0.180000007 0.180000007 0.180000007 ] 
+MakeNamedMaterial "buzzmix-1" 
+        "float uroughness" [ 0.00499999989 ] 
+        "float vroughness" [ 0.00499999989 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.00232199999 0.00232199999 0.00232199999 ] 
+        "rgb Ks" [ 0.239999995 0.239999995 0.239999995 ] 
+MakeNamedMaterial "buzzmix-5" 
+        "float uroughness" [ 0.00499999989 ] 
+        "float vroughness" [ 0.00499999989 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.00232199999 0.00232199999 0.00232199999 ] 
+        "rgb Ks" [ 0.239999995 0.239999995 0.239999995 ] 
+MakeNamedMaterial "multi-arm-1" 
+        "float uroughness" [ 0.0466899984 ] 
+        "float vroughness" [ 0.0466899984 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.699999988 0.699999988 0.699999988 ] 
+        "rgb Ks" [ 0 0 0 ] 
+MakeNamedMaterial "buzzmix-3" 
+        "float uroughness" [ 0.00499999989 ] 
+        "float vroughness" [ 0.00499999989 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.00232199999 0.00232199999 0.00232199999 ] 
+        "rgb Ks" [ 0.239999995 0.239999995 0.239999995 ] 
+MakeNamedMaterial "buzzmix-2" 
+        "float uroughness" [ 0.00499999989 ] 
+        "float vroughness" [ 0.00499999989 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.00232199999 0.00232199999 0.00232199999 ] 
+        "rgb Ks" [ 0.239999995 0.239999995 0.239999995 ] 
+MakeNamedMaterial "full reflection" 
+        "float uroughness" [ 0 ] 
+        "float vroughness" [ 0 ] 
+        "string type" [ "substrate" ] 
+        "rgb Kd" [ 0.257072985 0.257072985 0.257072985 ] 
+        "rgb Ks" [ 1 1 1 ] 

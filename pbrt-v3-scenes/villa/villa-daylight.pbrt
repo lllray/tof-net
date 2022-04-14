@@ -1,0 +1,46 @@
+Scale -1 1 1
+LookAt 10.2391166687 5.0139517784 3.7599999905
+        11.2326469421 5.1700000763 3.7599999905
+        0 0 1
+Camera "perspective" 
+        "float fov" [ 48 ] 
+
+Film "image" 
+        "integer xresolution" [ 1200 ] 
+        "integer yresolution" [ 580 ] 
+        "float scale" [ 3 ] 
+        "string filename" "villa-daylight.exr"
+
+Sampler "sobol" "integer pixelsamples" [ 32 ]
+# Higher quality
+Sampler "sobol" "integer pixelsamples" [ 2048 ] 
+
+#Integrator "bdpt" 
+
+Integrator "mlt" "integer mutationsperpixel" 10000
+
+#############################################
+
+WorldBegin
+
+AttributeBegin
+    Rotate 15 1 0 0
+    Rotate 10 0 1 0
+    LightSource "infinite" 
+            "string mapname" [ "textures/skylight-morn.exr" ] 
+            "rgb scale" [ 2 2 2 ] 
+AttributeEnd
+
+# Distant light as a better stand-in for the sun
+AttributeBegin
+    LightSource "distant" 
+            "point from" [ 0 -25 8 ] 
+            "point to" [ 10 5 3 ] 
+            "rgb L" [ 2.4314575195 1.7676141262 1.2205084562 ] 
+AttributeEnd
+
+Include "materials.pbrt"
+
+Include "geometry.pbrt"
+
+WorldEnd

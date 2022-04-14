@@ -1,0 +1,37 @@
+Transform [0.000669885023224 -0.00470105512031 -0.999988725604 0  -0.141070093049 0.989988222244 -0.00474854348075 0  0.989999383889 0.141071683547 -4.28585118784e-16 0  -10.9667921676 76.9617063907 184.556137683 1]
+Camera "perspective" "float fov" [22.2753333373] "float focaldistance" [899.384338379] "float lensradius" [0]
+
+Film "image" "string filename" ["frame210.exr"]
+    "integer xresolution" [1920] "integer yresolution" [840]
+   "integer xresolution" [1440] "integer yresolution" [630]
+#   "integer xresolution" [960] "integer yresolution" [420]
+#   "integer xresolution" [480] "integer yresolution" [210]
+   "float scale" .25
+   "float maxsampleluminance" 50
+   "integer writefrequency" 120
+# imgtool convert -bloomscale .4 -bloomlevel 1 ...
+
+PixelFilter "gaussian" "float xwidth" 1.5 "float ywidth" 1.5
+
+Sampler "sobol" "integer pixelsamples" [8192]
+Integrator "bdpt" "integer maxdepth" 4
+
+Sampler "sobol" "integer pixelsamples" 16384
+Sampler "sobol" "integer pixelsamples" 4096
+Integrator "path" "integer maxdepth" 4
+
+WorldBegin
+
+AttributeBegin
+CoordSysTransform "camera"
+LightSource "point" "color I" [30000 30000 30000]
+AttributeEnd
+
+# Default Material
+Material "matte" "rgb Kd" [.3 .3 .3]
+
+Include "textures.pbrt"
+Include "materials.pbrt"
+Include "geometry-f210.pbrt"
+
+WorldEnd

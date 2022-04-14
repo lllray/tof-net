@@ -1,0 +1,14 @@
+
+# light hanging from ceiling
+AttributeBegin
+AreaLightSource "diffuse" "blackbody L" [4000 30]
+Translate .4  2.5 2.8
+Shape "sphere" "float radius" .1
+AttributeEnd
+
+# inside standing lamp
+AttributeBegin
+AreaLightSource "diffuse" "blackbody L" [4000 60]
+Translate 2.6 1.4 1.7
+Shape "sphere" "float radius" .15
+AttributeEnd
