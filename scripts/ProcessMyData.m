@@ -15,13 +15,13 @@ calib_phase_offset = 1;
 navg = 5; % number of measurements to average
 output_folder = sprintf('phase_calibrated_norm2amp_rebuttal_mean%d', navg);
 
-use_my = 1;
+use_my = 0;
 
 if use_my == 1
 
     %-----  my data  ---------
-    date = {'0417-1'};
-    freqs = [37650000,45180000];
+    date = {'0417-2'};
+    freqs = [45180000,37650000];
     takes = 0;
     width = 240;
     height = 180;
@@ -146,7 +146,7 @@ if use_my == 1
             % calculate depth
             phase = angle(corr_imgs(1:end/2,:,:) + 1i*corr_imgs(end/2+1:end,:,:));
             phase = phase([1,end],:,:);
-            freqsm = freqs/10;
+            freqsm = freqs;
             lambda = 3e8./freqsm;
             phase(phase<0) = 2*pi + phase(phase<0);
             tic;
@@ -173,17 +173,17 @@ if use_my == 1
 
             %%%%%%%%% visualize point clouds
             %need sensor param
-    %         pointCloud = depthToPointCloud(depth);
-    %         pointCloud_pu = depthToPointCloud(depth_pu);
-    %         if is_visualizing
-    %             figure(numel(freqs)+2);
-    %             subplot(121); pcshow(reshape(pointCloud,320*240,3)); title('point cloud of tintin depth');
-    %             subplot(122); pcshow(reshape(pointCloud_pu,320*240,3)); title('point cloud of phase unwrapped depth');
-    %         end
-    %         if is_saving
-    %             save(sprintf('%s/%s/%s_pointcloud_%d',folder,output_folder,date{idate},takes(itakes)),'pointCloud');
-    %             save(sprintf('%s/%s/%s_pointcloud_pu_%d',folder,output_folder,date{idate},takes(itakes)),'pointCloud_pu');
-    %         end
+            pointCloud = my_depthToPointCloud(depth);
+            pointCloud_pu = my_depthToPointCloud(depth_pu);
+            if is_visualizing
+                figure(numel(freqs)+2);
+                subplot(121); pcshow(reshape(pointCloud,width*height,3)); title('point cloud of tintin depth');
+                subplot(122); pcshow(reshape(pointCloud_pu,width*height,3)); title('point cloud of phase unwrapped depth');
+            end
+            if is_saving
+                save(sprintf('%s/%s/%s_pointcloud_%d',folder,output_folder,date{idate},takes(itakes)),'pointCloud');
+                save(sprintf('%s/%s/%s_pointcloud_pu_%d',folder,output_folder,date{idate},takes(itakes)),'pointCloud_pu');
+            end
 
             if is_visualizing
                 pause(10);
