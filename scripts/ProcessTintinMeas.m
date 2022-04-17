@@ -50,15 +50,15 @@ output_folder = sprintf('phase_calibrated_norm2amp_rebuttal_mean%d', navg);
 % takes = 1:9;
 % nc = 20;
 
-% date = {'1110'};
-% freqs = [40,70];
-% takes = 0:41;
-% nc = 20;
-
-date = {'0122'};
+date = {'1110'};
 freqs = [40,70];
-takes = 0:4;
-nc = 30;
+takes = 0:41;
+nc = 20;
+
+% date = {'0122'};
+% freqs = [40,70];
+% takes = 0:4;
+% nc = 30;
 % --
 for idate = 1:numel(date)
     folder = ['~/bag/tintin_EE367/data_tintin/meas_' date{idate}];
