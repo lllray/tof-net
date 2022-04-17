@@ -15,7 +15,7 @@ calib_phase_offset = 1;
 navg = 5; % number of measurements to average
 output_folder = sprintf('phase_calibrated_norm2amp_rebuttal_mean%d', navg);
 
-use_my = 0;
+use_my = 1;
 
 if use_my == 1
 
@@ -69,15 +69,17 @@ if use_my == 1
                 phase_I = data_mean(4+width*height:end);
                 I_Mat = reshape(phase_I,width,height)';
                 Q_Mat = reshape(phase_Q,width,height)';
-    %             if calib_phase_offset
-    %                 load ~/bag/tintin_EE367/src/CalibratePhaseOffsetReal;
-    %                 ov = cos(offsets(ifreqs)) + 1i*sin(offsets(ifreqs)); % offset vector, assumes 40, 70MHz
-    %                 ov = ov./abs(ov); % norm 1
-    %                 tmp = I_Mat+1i*Q_Mat;
-    %                 tmp = tmp./ov;
-    %                 I_Mat = real(tmp);
-    %                 Q_Mat = imag(tmp);
-    %             end
+                if calib_phase_offset
+                    load ~/bag/tintin_EE367/src/CalibratePhaseOffsetReal;
+                    offsets(1) = -3.14/2;
+                    offsets(2) = -3.14/2;
+                    ov = cos(offsets(ifreqs)) + 1i*sin(offsets(ifreqs)); % offset vector, assumes 40, 70MHz
+                    ov = ov./abs(ov); % norm 1
+                    tmp = I_Mat+1i*Q_Mat;
+                    tmp = tmp./ov;
+                    I_Mat = real(tmp);
+                    Q_Mat = imag(tmp);
+                end
                 Amp = abs(I_Mat+1i*Q_Mat);
                 Phase = angle(I_Mat+1i*Q_Mat);
                 if is_visualizing
@@ -174,7 +176,7 @@ if use_my == 1
             %%%%%%%%% visualize point clouds
             %need sensor param
             pointCloud = my_depthToPointCloud(depth);
-            pointCloud_pu = my_depthToPointCloud(depth_pu);
+            pointCloud_pu = my_depthToPointCloud(depth_pu,'no_calib');
             if is_visualizing
                 figure(numel(freqs)+2);
                 subplot(121); pcshow(reshape(pointCloud,width*height,3)); title('point cloud of tintin depth');
@@ -413,6 +415,4 @@ else
         end
     end
 end
-
-close all
 

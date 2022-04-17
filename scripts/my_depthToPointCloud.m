@@ -4,15 +4,7 @@ function pointCloudFrame = my_depthToPointCloud(depth, cameratype)
     global width height fx fy cx cy k1 k2 k3 p1 p2
     width = 240;
     height = 180;
-%         fx = 224;
-%         fy = 224;
-%         cx = 113;
-%         cy = 88;
-%         k1 = 0.0381695;
-%         k2 = 0.084686;
-%         k3 = -0.000104;
-%         p1 = 0.007071;
-%         p2 = -0.575066;
+    if ~exist('cameratype','var') || strcmp(cameratype,'no_calib')
         fx = 224;
         fy = 224;
         cx = 120;
@@ -22,6 +14,17 @@ function pointCloudFrame = my_depthToPointCloud(depth, cameratype)
         k3 = 0;
         p1 = 0;
         p2 = 0;
+    else
+        fx = 224;
+        fy = 224;
+        cx = 113;
+        cy = 88;
+        k1 = 0.0381695;
+        k2 = 0.084686;
+        k3 = -0.000104;
+        p1 = 0.007071;
+        p2 = -0.575066;
+    end
     if 1
         % init
         directions = zeros(height*width,3);
