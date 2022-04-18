@@ -1,8 +1,9 @@
-clc;clear;%close all
+clc;clear;close all;
 % load('~/ROS/DeepEnd2End/DeepToF_release_0.1/src/GAN/results/my_resnet_lite_my_imageGAN_128_pretrained/latest_test/images/fake_B/000001.mat') %results are stored as .mat files under [results_folder]/fake_B
 % load('~/ROS/DeepEnd2End/DeepToF_release_0.1/src/GAN/results/my_resnet_lite_my_imageGAN_128_pretrained/latest_test_real_all_calib/images/fake_B/1110_pix2pix_test_real_5.mat') %results are stored as .mat files under [results_folder]/fake_B
-mydata = '0417-2';
-load(sprintf('~/ROS/DeepEnd2End/DeepToF_release_0.1/src/GAN/results/my_resnet_lite_my_imageGAN_128_pretrained/latest_test_real_all_calib/images/fake_B/%s_pix2pix_test_real_0.mat',mydata)) %results are stored as .mat files under [results_folder]/fake_B
+mydata = '0122';
+type = 'real_A';
+load(sprintf('~/ROS/DeepEnd2End/DeepToF_release_0.1/src/GAN/results/my_resnet_lite_my_imageGAN_128_pretrained/latest_test_real_all_calib/images/%s/%s_pix2pix_test_real_0.mat',type,mydata)) %results are stored as .mat files under [results_folder]/fake_B
 gt = single(imread(sprintf('~/bag/tintin_EE367/my_data/%s/phase_calibrated_norm2amp_rebuttal_mean5/%s_depth_0.png',mydata,mydata)))/1e4;
 x = x*10 %scale from [0,1] back to distance in meters
 result = squeeze(x(1,:,:));
@@ -19,9 +20,9 @@ subplot(132); imagesc(result); axis image; colorbar; title('result');
 
 %%%%%%%%% visualize point clouds
 %need sensor param
-pointCloud = my_depthToPointCloud(depth);
-pointCloud_pu = my_depthToPointCloud(depth_pu);
+pointCloud_gt = my_depthToPointCloud(gt);
+pointCloud_this = depthToPointCloud(result);
 
 figure(2);
-subplot(121); pcshow(reshape(pointCloud,width*height,3)); title('point cloud of tintin depth');
-subplot(122); pcshow(reshape(pointCloud_pu,width*height,3)); title('point cloud of phase unwrapped depth');
+subplot(121); pcshow(reshape(pointCloud_gt,240*180,3)); title('point cloud of gt depth');
+subplot(122); pcshow(reshape(pointCloud_this,320*240,3)); title('point cloud of this depth');

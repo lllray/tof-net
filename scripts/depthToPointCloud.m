@@ -6,15 +6,15 @@ function pointCloudFrame = depthToPointCloud(depth, cameratype)
     height = 240;
     if ~exist('cameratype','var') || strcmp(cameratype,'tintin')
         %no calib
-        % fx = 220;
-        % fy = 220;
-        % cx = 160;
-        % cy = 120;
-        % k1 = 0;
-        % k2 = 0;
-        % k3 = 0;
-        % p1 = 0;
-        % p2 = 0;
+%         fx = 220;
+%         fy = 220;
+%         cx = 160;
+%         cy = 120;
+%         k1 = 0;
+%         k2 = 0;
+%         k3 = 0;
+%         p1 = 0;
+%         p2 = 0;
         %Tintin lens
         fx = 230;
         fy = 230;
