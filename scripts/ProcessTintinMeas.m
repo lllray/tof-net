@@ -35,10 +35,10 @@ output_folder = sprintf('phase_calibrated_norm2amp_rebuttal_mean%d', navg);
 % takes = 0:42;
 % nc = 20;
 
-date = {'0929'};
-freqs = [40,70];
-takes = 0:50;
-nc = 20;
+% date = {'0929'};
+% freqs = [40,70];
+% takes = 0:50;
+% nc = 20;
 
 % date = {'1018'};
 % freqs = [40,70];
@@ -50,10 +50,10 @@ nc = 20;
 % takes = 1:9;
 % nc = 20;
 
-% date = {'1110'};
-% freqs = [40,70];
-% takes = 0:41;
-% nc = 20;
+date = {'1110'};
+freqs = [40,70];
+takes = 0:41;
+nc = 20;
 
 % date = {'0122'};
 % freqs = [40,70];
@@ -228,11 +228,11 @@ for idate = 1:numel(date)
         end
         
         if is_visualizing
-            pause(0.5);
-            for ifig = 1:numel(freqs)+2, clf(ifig); end
+            pause(10);
+            %for ifig = 1:numel(freqs)+2, clf(ifig); end
         end
     end
 end
 
-close all
+%close all
 

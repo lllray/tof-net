@@ -1,9 +1,10 @@
 % implementation of Freedman et al. "SRA: Fast Removal of General Multipath for
 % ToF Sensors"
+
 clc; clear; close all
-folder = '~/ROS/DeepEnd2End/DeepToF_release_0.1/src/GAN/datasets/mpi_correction_corrnormamp2depth_albedoaug_zpass_test/test_real_all_calib/my/';
+folder = '~/ROS/DeepEnd2End/DeepToF_release_0.1/src/GAN/datasets/mpi_correction_corrnormamp2depth_albedoaug_zpass_test/test/';
 fn = dir([folder '*.mat']);
-folder_out = 'SRA_results_all_real_all_calib/';
+folder_out = 'SRA_results_all/';
 mkdir(folder_out);
 isnoise = 0;
 isvis = 0;
@@ -19,8 +20,7 @@ for ifn = 1:numel(fn) %[170,69,86,110,129]
     dmax = 1.5*max(dist_gt(dist_gt<Inf)); % upper bound
 
     d = dmin:0.01:dmax; 
-    f = [45180000,37650000];
-    %f = [40,70]*1e6;
+    f = [40,70]*1e6;
     m = numel(d);
     c = 3e8;
     Phi = [cos(4*pi*d*f(1)/c); cos(4*pi*d*f(2)/c); sin(4*pi*d*f(1)/c); sin(4*pi*d*f(2)/c)];
@@ -37,7 +37,7 @@ for ifn = 1:numel(fn) %[170,69,86,110,129]
     options = optimoptions('linprog','Algorithm','interior-point','Display','off');
     distSRA = zeros(h,w);
     xall = zeros(h,w,m);
-    corr(:,:,[5])=[];
+    corr（）
     parfor ih = 1:h
         for iw = 1:w
             v = squeeze(corr(ih,iw,:));
@@ -77,11 +77,9 @@ for ifn = 1:numel(fn) %[170,69,86,110,129]
             end
         end
     end
-    pointCloudSRA = my_depthToPointCloud(distSRA,'no_calib');
-    %pointCloudSRA = depthToPointCloud(distSRA,'tintin');
+    pointCloudSRA = depthToPointCloud(distSRA,'pbrt');
     depthSRA = pointCloudSRA(:,:,3)';
-    pointCloudGT = my_depthToPointCloud(dist_gt,'no_calib');
-    %pointCloudGT = depthToPointCloud(dist_gt,'tintin');
+    pointCloudGT = depthToPointCloud(dist_gt,'pbrt');
     depthGT = pointCloudGT(:,:,3)';
     save([folder_out fn(ifn).name],'depthSRA','distSRA');
     if isvis

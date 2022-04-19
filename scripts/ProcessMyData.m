@@ -6,7 +6,7 @@
 clc; clear; close all
 
 max_depth_norm = 10; % max depth for normalization to [0,1]
-max_depth_vis = 6; % max depth for visualization
+max_depth_vis = 10; % max depth for visualization
 is_visualizing = true;
 is_saving = true;
 normalization = 2;
@@ -15,12 +15,13 @@ calib_phase_offset = 1;
 navg = 5; % number of measurements to average
 output_folder = sprintf('phase_calibrated_norm2amp_rebuttal_mean%d', navg);
 
+medfilt_size = 3;
 use_my = 1;
 
 if use_my == 1
 
     %-----  my data  ---------
-    date = {'0417-2'};
+    date = {'0419-1'};
     freqs = [45180000,37650000];
     takes = 0;
     width = 240;
@@ -88,6 +89,8 @@ if use_my == 1
                     I_Mat = real(tmp);
                     Q_Mat = imag(tmp);
                 end
+                I_Mat = medfilt2(I_Mat,[medfilt_size,medfilt_size]);
+                Q_Mat = medfilt2(Q_Mat,[medfilt_size,medfilt_size]);
                 Amp = abs(I_Mat+1i*Q_Mat);
                 Phase = angle(I_Mat+1i*Q_Mat);
                 if is_visualizing

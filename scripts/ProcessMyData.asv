@@ -6,7 +6,7 @@
 clc; clear; close all
 
 max_depth_norm = 10; % max depth for normalization to [0,1]
-max_depth_vis = 6; % max depth for visualization
+max_depth_vis = 10; % max depth for visualization
 is_visualizing = true;
 is_saving = true;
 normalization = 2;
@@ -15,12 +15,13 @@ calib_phase_offset = 1;
 navg = 5; % number of measurements to average
 output_folder = sprintf('phase_calibrated_norm2amp_rebuttal_mean%d', navg);
 
+medfilt_size = 3;
 use_my = 1;
 
 if use_my == 1
 
     %-----  my data  ---------
-    date = {'0417-2'};
+    date = {'0419-1'};
     freqs = [45180000,37650000];
     takes = 0;
     width = 240;
@@ -59,8 +60,7 @@ if use_my == 1
 
         is_corr_good = true;
         h = zeros(numel(freqs)*2,resize_height,resize_width);
-        for off = -pi:0.1:pi
-        for ifreqs = 1:numel(freqs)
+        for ifreqs = 1:numel(freqs)s
             fnc = sprintf('%s/itof_output_%d.txt',folder,freqs(ifreqs));
             if ~exist(fnc,'file')
                is_corr_good = false;
@@ -70,8 +70,8 @@ if use_my == 1
             data_mean = mean(my_data(:,end-navg+1:end),2);
                 phase_Q = data_mean(4:3+width*height);
                 phase_I = data_mean(4+width*height:end);
-                I_Mat = reshape(phase_I,width,height)';
-                Q_Mat = reshape(phase_Q,width,height)';
+                I_Mat = reshape(phase_I,width,height)'./1e6;
+                Q_Mat = reshape(phase_Q,width,height)'./1e6;
                 if resize_height ~= height
                     I_Mat = imresize(int32((I_Mat+1000).*100),[resize_height,resize_width],'bilinear');
                     Q_Mat = imresize(int32((Q_Mat+1000).*100),[resize_height,resize_width],'bilinear');
@@ -80,8 +80,8 @@ if use_my == 1
                 end
                 if calib_phase_offset
                     load ~/bag/tintin_EE367/src/CalibratePhaseOffsetReal;
-                    offsets(1) = off;
-                    offsets(2) = off;
+                    offsets(1) = -pi/3;
+                    offsets(2) = -pi/3;
                     ov = cos(offsets(ifreqs)) + 1i*sin(offsets(ifreqs)); % offset vector, assumes 40, 70MHz
                     ov = ov./abs(ov); % norm 1
                     tmp = I_Mat+1i*Q_Mat;
@@ -89,6 +89,8 @@ if use_my == 1
                     I_Mat = real(tmp);
                     Q_Mat = imag(tmp);
                 end
+                I_Mat = medfilt2(I_Mat,[medfilt_size,medfilt_size]);
+                Q_Mat = medfilt2(Q_Mat,[medfilt_size,medfilt_size]);
                 Amp = abs(I_Mat+1i*Q_Mat);
                 Phase = angle(I_Mat+1i*Q_Mat);
                 if is_visualizing
@@ -169,7 +171,6 @@ if use_my == 1
                 save(sprintf('%s/%s/%s_depth_pu_%d.mat',folder,output_folder,date{idate},takes(itakes)),'depth_pu');
                 imwrite(depth_pu/max_depth_vis, sprintf('%s/%s/%s_depth_pu_%d.png',folder,output_folder,date{idate},takes(itakes)),'Bitdepth',16);
             end
-        end
             % normalize, assemble
             depth_pu_pair = reshape(depth_pu, 1, size(depth_pu,1), size(depth_pu,2));
             if ~catamp
