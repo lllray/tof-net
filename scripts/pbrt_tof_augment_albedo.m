@@ -1,8 +1,8 @@
 clc;clear;close all
 rng(0);
 for j = 1:10
-    fns = '/Users/ssu/GitHub/pbrt-v3-scenes/pavilion/pavilion_tof.pbrt';
-    fnt = sprintf('/Users/ssu/GitHub/pbrt-v3-scenes/pavilion/pavilion_tof_%d.pbrt',j);
+    fns = '/home/lixin/ROS/DeepEnd2End/DeepToF_release_0.1/pbrt-v3-scenes/pavilion/pavilion_tof.pbrt';
+    fnt = sprintf('/home/lixin/ROS/DeepEnd2End/DeepToF_release_0.1/pbrt-v3-scenes/pavilion/pavilion_tof_%d.pbrt',j);
     strs = '"string type" [ "matte" ]';
     strt = @(a) sprintf('"string type" [ "matte" ] "rgb Kd" [ %.2f %.2f %.2f ] ', a, a, a);
     % Read txt into cell A

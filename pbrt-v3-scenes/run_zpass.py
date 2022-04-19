@@ -92,12 +92,12 @@ rl = tree.nodes.new('CompositorNodeRLayers')
 v = tree.nodes.new('CompositorNodeOutputFile')   
 v.base_path = "//render/"
 # Links
-links.new(rl.outputs['Z'], v.inputs[0]) # link Z to output
+links.new(rl.outputs['Depth'], v.inputs[0]) # link Z to output
 #### end of setup blender properties ####
 
 
 #### in/out path ####
-with open('/Users/ssu/GitHub/pbrt-v3-scenes/contemporary-bathroom/camerapath_z.txt') as f:
+with open('/home/lixin/ROS/DeepEnd2End/DeepToF_release_0.1/pbrt-v3-scenes/contemporary-bathroom/camerapath_z.txt') as f:
 	lines=f.readlines()
 renderFolder = "//render"
 #### end of in/out path ####

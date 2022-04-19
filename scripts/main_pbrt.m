@@ -6,8 +6,10 @@ if strcmp(computer, 'MACI64')
     path = '/Users/ssu/Documents/Research/LearningMultiPath/data';
     path_out = '/Users/ssu/Documents/Research/LearningMultiPath/data';
 else
-    path = '/home/shuochsu/Research/pbrt-v3-tof/Results';
-    path_out = '/home/shuochsu/Research/LearningMultiPath/data';
+%     path = '/home/shuochsu/Research/pbrt-v3-tof/Results';
+%     path_out = '/home/shuochsu/Research/LearningMultiPath/data';
+    path = '/home/lixin/ROS/DeepEnd2End/DeepToF_release_0.1/src/pbrt-v3-tof/Results';
+    path_out = '/home/lixin/ROS/DeepEnd2End/DeepToF_release_0.1/data';
 end
 
 datasets = {'bathroom','white-room','breakfast','contemporary-bathroom','pavilion'}; 
