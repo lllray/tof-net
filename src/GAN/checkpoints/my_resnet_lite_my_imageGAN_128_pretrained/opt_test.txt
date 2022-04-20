@@ -21,7 +21,7 @@
                      norm: none
              normalizeAmp: 0
                 output_nc: 1
-                    phase: test_real_all_calib
+                    phase: test
            resize_or_crop: scale_height
               results_dir: ./results/
                    rotate: 0

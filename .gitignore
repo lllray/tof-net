@@ -13,6 +13,6 @@ src/GAN/results/my_resnet_lite_my_imageGAN_128_pretrained/latest_test_real_all_c
 
 *.mat
 
-src/GAN/results/0122/
-
-src/GAN/results/0417-2/
+src/GAN/results/
+src/GAN/datasets/
+src/GAN/checkpoints/

@@ -19,7 +19,7 @@ medfilt_size = 1;
 use_my = 1;
 
     %-----  my data  ---------
-    date = {'0420-3'};
+    date = {'0420-4'};
     freqs = [45180000,37650000];
     ex_freqs = [4e7,7e7];
     takes = 0;
