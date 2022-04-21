@@ -9,6 +9,7 @@ max_depth_norm = 10; % max depth for normalization to [0,1]
 max_depth_vis = 10; % max depth for visualization
 is_visualizing = false;
 is_saving_debug = false;
+is_saving_depth_pu = true;
 is_saving_release = true;
 normalization = 2;
 catamp = 1; % if concat amp image with imA
@@ -22,7 +23,7 @@ use_my = 1;
 use_depth_as_gt = 1;
 
     %-----  my data  ---------
-    date = {'dataset-0420-6'};
+    date = {'dataset-0421-2'};
     freqs = [45180000,37650000];
     takes = 0;
     width = 240;
@@ -170,13 +171,22 @@ use_depth_as_gt = 1;
                     %phase =  (phase.*~neg + neg.*(-1.*phase + pi));
                     phase(phase<0) = 2*pi + phase(phase<0);
                     tic;
-                    depth_pu = PhaseImgs2Depths(freqsm, phase, 0:0.02:10);
+                    depth_phaseunwarp = PhaseImgs2Depths(freqsm, phase, 0:0.02:10);
                 end
 
                 toc;
-                if is_saving_debug
-                    save(sprintf('%s/%s/%s_depth_pu_%d.mat',folder,depth_folder,date{idate},i),'depth_pu');
-                    imwrite(depth_pu/max_depth_vis, sprintf('%s/%s/%s_depth_pu_%d.png',folder,depth_folder,date{idate},i),'Bitdepth',16);
+                if is_saving_depth_pu
+                    phase = angle(corr_imgs(1:end/2,:,:) + 1i*corr_imgs(end/2+1:end,:,:));
+                    phase = phase([1,end],:,:);
+                    freqsm = freqs;
+                    lambda = 3e8./freqsm;
+                    %neg = phase <=0;
+                    %phase =  (phase.*~neg + neg.*(-1.*phase + pi));
+                    phase(phase<0) = 2*pi + phase(phase<0);
+                    tic;
+                    depth_phaseunwarp = PhaseImgs2Depths(freqsm, phase, 0:0.02:10);
+                    save(sprintf('%s/%s/%s_depth_pu_%d.mat',folder,depth_folder,date{idate},i),'depth_phaseunwarp');
+                    imwrite(depth_phaseunwarp/max_depth_vis, sprintf('%s/%s/%s_depth_pu_%d.png',folder,depth_folder,date{idate},i),'Bitdepth',16);
                 end
                 % normalize, assemble
                 depth_pu_pair = reshape(depth_pu, 1, size(depth_pu,1), size(depth_pu,2));

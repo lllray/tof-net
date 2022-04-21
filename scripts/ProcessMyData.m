@@ -17,7 +17,7 @@ output_folder = sprintf('phase_calibrated_norm2amp_rebuttal_mean%d', navg);
 
 medfilt_size = 3;
 use_my = 1;
-use_depth_as_gt = 1;
+use_depth_as_gt = 0;
 
     %-----  my data  ---------
     date = {'0420-4'};
@@ -170,7 +170,6 @@ use_depth_as_gt = 1;
                 depth_pu = PhaseImgs2Depths(freqsm, phase, 0:0.02:10);
             end
 
-            toc;
             if is_saving
                 save(sprintf('%s/%s/%s_depth_pu_%d.mat',folder,output_folder,date{idate},takes(itakes)),'depth_pu');
                 imwrite(depth_pu/max_depth_vis, sprintf('%s/%s/%s_depth_pu_%d.png',folder,output_folder,date{idate},takes(itakes)),'Bitdepth',16);

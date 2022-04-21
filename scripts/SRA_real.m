@@ -1,7 +1,7 @@
 % implementation of Freedman et al. "SRA: Fast Removal of General Multipath for
 % ToF Sensors"
 clc; clear; close all
-folder = '~/ROS/DeepEnd2End/DeepToF_release_0.1/src/GAN/datasets/mpi_correction_corrnormamp2depth_albedoaug_zpass_test/test_real_all_calib/my/';
+folder = '~/ROS/DeepEnd2End/DeepToF_release_0.1/src/GAN/datasets/mpi_correction_corrnormamp2depth_albedoaug_zpass_test/test_real_all_calib_my_room/';
 fn = dir([folder '*.mat']);
 folder_out = 'SRA_results_all_real_all_calib/';
 mkdir(folder_out);

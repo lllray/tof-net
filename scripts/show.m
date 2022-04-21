@@ -2,7 +2,7 @@ clc;clear;close all;
 % load('~/ROS/DeepEnd2End/DeepToF_release_0.1/src/GAN/results/my_resnet_lite_my_imageGAN_128_pretrained/latest_test/images/fake_B/000001.mat') %results are stored as .mat files under [results_folder]/fake_B
 % load('~/ROS/DeepEnd2End/DeepToF_release_0.1/src/GAN/results/my_resnet_lite_my_imageGAN_128_pretrained/latest_test_real_all_calib/images/fake_B/1110_pix2pix_test_real_5.mat') %results are stored as .mat files under [results_folder]/fake_B
 data_type = 2; % 1 = tintin 2 = my
-model_name = 'my_data_my_resnet_lite_my_imageGAN_128'; % my_resnet_lite_my_imageGAN_128_pretrained,22-04-20-num4,my_resnet_lite_my_imageGAN_128
+model_name = 'my_resnet_lite_my_imageGAN_128_pretrained'; % my_resnet_lite_my_imageGAN_128_pretrained,22-04-20-num4,my_resnet_lite_my_imageGAN_128
 type = 'fake_B'; % fake_B,real_A,real_B,sra
 if data_type == 1
 mydata = '1110';
@@ -10,8 +10,8 @@ take = 5;
 % mydata = '0926';
 % take = 40;
 elseif data_type == 2
-mydata = 'dataset-0420-6';
-take = 67;
+mydata = '0420-3';
+take = 0;
 end
 
 
@@ -36,9 +36,9 @@ imwrite(result, sprintf('~/ROS/DeepEnd2End/DeepToF_release_0.1/src/GAN/results/%
 %error = gt.-result;
 
 figure(1);
-suptitle('result');
-subplot(131); imagesc(gt); axis image; colorbar; title('gt');
-subplot(132); imagesc(result); axis image; colorbar; title('result');
+suptitle(sprintf('%s-%d depth compare',mydata,take));
+subplot(121); imagesc(gt); axis image; colorbar; title('gt');
+subplot(122); imagesc(result); axis image; colorbar; title('result');
 %subplot(133); imagesc(error); axis image; colorbar; title('error');
 
 %%%%%%%%% visualize point clouds

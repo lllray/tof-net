@@ -3,7 +3,7 @@ data_type = 2;
 if data_type == 1
  load('~/ROS/DeepEnd2End/DeepToF_release_0.1/src/GAN/datasets/mpi_correction_corrnormamp2depth_albedoaug_zpass/train/000980.mat');
 %load('~/ROS/DeepEnd2End/DeepToF_release_0.1/src/GAN/datasets/mpi_correction_corrnormamp2depth_albedoaug_zpass/test_real_all_calib_new/train/1110_pix2pix_test_real_17.mat');
-else load('~/bag/tintin_EE367/my_data/dataset-0420-6/train/dataset-0420-6_pix2pix_test_real_66.mat');
+else load('~/bag/tintin_EE367/my_data/dataset-0421-3/train/dataset-0421-3_pix2pix_test_real_169.mat');
 end
 dist_gt = permute(im_pair(1,:,end/2+1:end),[2,3,1]) * 10;
 
