@@ -2,23 +2,15 @@ clc;clear;close all;
 freqs = [45180000,37650000];
 width = 240;
 height = 180;
-type = 'fake_B'; % fake_B,real_A,real_B
 
-%change this to adapt your data
 config = '0429';
+type = 'fake_B'; % fake_B,real_A,real_B,sra
 GAN_path = "~/deep_tof/src/GAN" %change your gan path
-test_dir = sprintf('%s/datasets/royal_itof_test/test_0429_1',GAN_path)   %change your test path   
-result_dir = sprintf('%s/results/new_gan_128/latest_test_0429_1/images/%s/',GAN_path,type) %change your result path      
-%end
-
+test_dir = sprintf('%s/datasets/royal_itof_test/test_0429_1',GAN_path)      
+result_dir = sprintf('%s/results/new_gan_128/latest_test_0429_1/images/%s/',GAN_path,type)        
 
 resultList = dir(result_dir);
 n=length(resultList);
-if n==0
-    sprintf('resultList file name is zero, may have error result_dir')
-    return 
-end
-
 for i=3:n
     data_info = strsplit(resultList(i).name,'.')
     data_info = strsplit(data_info{1,1},'_pix2pix_test_real_')
