@@ -7,14 +7,15 @@ clc; clear; close all
 
 max_depth_norm = 10; % max depth for normalization to [0,1]
 max_depth_vis = 10; % max depth for visualization
-is_visualizing = false;
+is_visualizing = true;
 is_saving_debug = false;
-is_saving_depth_pu = true;
+is_saving_depth_pu = false;
 is_saving_release = true;
 normalization = 2;
 catamp = 1; % if concat amp image with imA
 calib_phase_offset = 0; 
 navg = 1; % number of measurements to average
+datasets_folder = '~/bag/tintin_EE367/my_data/';
 depth_folder = sprintf('phase_calibrated_norm2amp_rebuttal_mean%d', navg);
 data_folder = sprintf('impair_mean%d', navg);
 
@@ -23,7 +24,7 @@ use_my = 1;
 use_depth_as_gt = 1;
 
     %-----  my data  ---------
-    date = {'dataset-0421-2'};
+    date = {'dataset-0427-1'};
     freqs = [45180000,37650000];
     takes = 0;
     width = 240;
@@ -32,7 +33,7 @@ use_depth_as_gt = 1;
     % mydata_b = importdata('~/bag/tintin_EE367/my_data/itof_output_b.txt').';
 
     for idate = 1:numel(date)
-        folder = ['~/bag/tintin_EE367/my_data/' date{idate}];
+        folder = [datasets_folder date{idate}];
         mkdir([folder '/' depth_folder]);
         mkdir([folder '/' data_folder]);
         itakes = 1;
@@ -172,9 +173,9 @@ use_depth_as_gt = 1;
                     phase(phase<0) = 2*pi + phase(phase<0);
                     tic;
                     depth_phaseunwarp = PhaseImgs2Depths(freqsm, phase, 0:0.02:10);
+                    depth_pu = depth_phaseunwarp;
                 end
 
-                toc;
                 if is_saving_depth_pu
                     phase = angle(corr_imgs(1:end/2,:,:) + 1i*corr_imgs(end/2+1:end,:,:));
                     phase = phase([1,end],:,:);
@@ -206,7 +207,7 @@ use_depth_as_gt = 1;
                 
                 %%%%%%%%% visualize point clouds
                 %need sensor param
-                pointCloud = my_depthToPointCloud(depth);
+                pointCloud = my_depthToPointCloud(depth,'no_calib');
                 pointCloud_pu = my_depthToPointCloud(depth_pu,'no_calib');
                 if is_visualizing
                     figure(numel(freqs)+2);
@@ -219,7 +220,7 @@ use_depth_as_gt = 1;
                 end
 
                 if is_visualizing
-                    pause(1);
+                    pause(10);
                 end    
                 
                 

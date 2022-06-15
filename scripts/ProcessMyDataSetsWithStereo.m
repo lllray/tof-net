@@ -7,21 +7,37 @@ clc; clear; close all
 
 max_depth_norm = 10; % max depth for normalization to [0,1]
 max_depth_vis = 10; % max depth for visualization
-is_visualizing = flase;
-is_saving_debug = true;
+is_visualizing = false;
+is_saving_debug = false;
+is_saving_depth_pu = false;
 is_saving_release = true;
 normalization = 2;
 catamp = 1; % if concat amp image with imA
 calib_phase_offset = 0; 
 navg = 1; % number of measurements to average
-output_folder = sprintf('phase_calibrated_norm2amp_rebuttal_mean%d', navg);
-
-medfilt_size = 3;
+datasets_folder = '/media/lixin/7A255A482B58BC84/lx/0429/little_test/';
+depth_folder = sprintf('phase_calibrated_norm2amp_rebuttal_mean%d', navg);
+data_folder = sprintf('impair_mean%d', navg);
+config = '0429';
+medfilt_size = 1;
 use_my = 1;
 use_depth_as_gt = 1;
+data_from_datasets = 1;
+
+mkdir([datasets_folder '/' depth_folder]);
+mkdir([datasets_folder '/' data_folder]);
 
     %-----  my data  ---------
-    date = {'dataset-0420-5'};
+    if data_from_datasets == 1
+        fileList = dir(datasets_folder);
+        n=length(fileList);
+        date = {};
+        for i=3:n
+            date = [date fileList(i).name];
+        end
+    else
+        date = {'_2022-04-28-16-51-25'};
+    end
     freqs = [45180000,37650000];
     takes = 0;
     width = 240;
@@ -30,17 +46,24 @@ use_depth_as_gt = 1;
     % mydata_b = importdata('~/bag/tintin_EE367/my_data/itof_output_b.txt').';
 
     for idate = 1:numel(date)
-        folder = ['~/bag/tintin_EE367/my_data/' date{idate}];
-        mkdir([folder '/' output_folder]);
+        folder = [datasets_folder date{idate}]
         itakes = 1;
             
             %%%%%%%%% process depth
-            fnd = sprintf('%s/itof_output_depth.txt',folder);
+            fnd = sprintf('%s/stereo_depth_in_itof.txt',folder);
             if ~exist(fnd,'file')
                 printf("not find depth data")
                return;
             end
             depth_data = importdata(fnd).';
+            
+            fnsd = sprintf('%s/itof_output_depth.txt',folder);
+            if ~exist(fnd,'file')
+                printf("not find source depth data")
+               return;
+            end
+            source_depth_data = importdata(fnsd).';
+            
             raw_data = [];
             for ifreqs = 1:numel(freqs)
                 fnc = sprintf('%s/itof_output_%d.txt',folder,freqs(ifreqs));
@@ -52,32 +75,58 @@ use_depth_as_gt = 1;
                  raw_data = cat(3,raw_data,importdata(fnc).');
             end
             [d_r,d_c] = size(depth_data)
-            [raw_r,raw_c,raw_n] = size(raw_data)
+            [sd_r,sd_c] = size(source_depth_data);
+            [raw_r,raw_c,raw_n] = size(raw_data);
             if raw_c ~= d_c
                 printf("depth data num is not eual raw data num")
             end
+            timestamp_list = source_depth_data(1,:);
             for i = 1:d_c
                 depth = depth_data(:,i);
+                timestamp = depth(1);
                 depth = depth(4:3+height*width);
                 depth = reshape(depth,width,height)';
+                depth(depth<=0.0) = nan; % is importan to set nan
+                depth(depth>=max_depth_norm) = nan; % is importan to set nan
                 if medfilt_size > 1
                 depth = medfilt2(depth,[medfilt_size,medfilt_size]);
+                end
+                find = 0;
+                for j = 1:sd_c
+                    if timestamp == timestamp_list(j)
+                        find = 1;
+                        break;
+                    end
+                end
+                if find == 0
+                    continue
+                end
+                i
+                s_depth = source_depth_data(:,j);
+                s_depth = s_depth(4:3+height*width);
+                s_depth = reshape(s_depth,width,height)';
+                s_depth(s_depth<=0.0) = nan; % is importan to set nan
+                if medfilt_size > 1
+                s_depth = medfilt2(s_depth,[medfilt_size,medfilt_size]);
                 end
                 if is_visualizing
                 figure(1);
                 suptitle(fnd);
                 subplot(221); imagesc(depth); axis image; colorbar; title('depth');
+                subplot(222); imagesc(s_depth); axis image; colorbar; title('source depth');
                 subplot(223); plot(squeeze(depth(end/2,:))); legend('mid row'); 
                 subplot(224); plot(squeeze(depth(:,end/2))); legend('mid col'); 
                 end
-                if is_saving
-                    save(sprintf('%s/%s/%s_depth_%d.mat',folder,output_folder,date{idate},i),'depth');
-                    imwrite(depth/max_depth_vis, sprintf('%s/%s/%s_depth_%d.png',folder,output_folder,date{idate},i),'Bitdepth',16);
+                if is_saving_release
+                    save(sprintf('%s/%s/%s_depth_%ld.mat',datasets_folder,depth_folder,date{idate},timestamp),'depth');
+                    imwrite(depth/max_depth_vis, sprintf('%s/%s/%s_depth_%ld.png',datasets_folder,depth_folder,date{idate},timestamp),'Bitdepth',16);
+                    save(sprintf('%s/%s/%s_source_depth_%ld.mat',datasets_folder,depth_folder,date{idate},timestamp),'s_depth');
+                    imwrite(s_depth/max_depth_vis, sprintf('%s/%s/%s_source_depth_%ld.png',datasets_folder,depth_folder,date{idate},timestamp),'Bitdepth',16);
                 end
                 
                 h = zeros(numel(freqs)*2,height,width);
                 for ifreqs = 1:numel(freqs)
-                    raw = raw_data(:,i,ifreqs);
+                    raw = raw_data(:,j,ifreqs);
                         phase_Q = raw(4:3+width*height);
                         phase_I = raw(4+width*height:end);
                         I_Mat = reshape(phase_I,width,height)';
@@ -105,9 +154,9 @@ use_depth_as_gt = 1;
                             subplot(223); imagesc(Amp); axis image; colorbar; title('amp');
                             subplot(224); imagesc(Phase); axis image; colorbar; title('phase');
                         end
-                        if is_saving
-                            save(sprintf('%s/%s/%s_amp_%d_%d.mat',folder,output_folder,date{idate},i,freqs(ifreqs)),'Amp');
-                            save(sprintf('%s/%s/%s_phase_%d_%d.mat',folder,output_folder,date{idate},i,freqs(ifreqs)),'Phase');
+                        if is_saving_debug
+                            save(sprintf('%s/%s/%s_amp_%ld_%d.mat',folder,depth_folder,date{idate},timestamp,freqs(ifreqs)),'Amp');
+                            save(sprintf('%s/%s/%s_phase_%ld_%d.mat',folder,depth_folder,date{idate},timestamp,freqs(ifreqs)),'Phase');
                         end
                         h(ifreqs,:,:) = I_Mat;
                         h(ifreqs+numel(freqs),:,:) = Q_Mat;
@@ -115,8 +164,8 @@ use_depth_as_gt = 1;
 
                 %%%%%%%%% save corr for network prediction (my implementation of ed)
                 corr_imgs = h;
-                if is_saving
-                    save(sprintf('%s/%s/real_%s_all_%d_corr_imgs',folder,output_folder,date{idate},i),'corr_imgs');
+                if is_saving_debug
+                    save(sprintf('%s/%s/real_%s_all_%ld_corr_imgs',folder,depth_folder,date{idate},timestamp),'corr_imgs');
                 end
 
                 %%%%%%%%% save image pair for pix2pix based GAN network
@@ -167,13 +216,22 @@ use_depth_as_gt = 1;
                     %phase =  (phase.*~neg + neg.*(-1.*phase + pi));
                     phase(phase<0) = 2*pi + phase(phase<0);
                     tic;
-                    depth_pu = PhaseImgs2Depths(freqsm, phase, 0:0.02:10);
+                    depth_phaseunwarp = PhaseImgs2Depths(freqsm, phase, 0:0.02:10);
+                    depth_pu = depth_phaseunwarp;
                 end
 
-                toc;
-                if is_saving
-                    save(sprintf('%s/%s/%s_depth_pu_%d.mat',folder,output_folder,date{idate},i),'depth_pu');
-                    imwrite(depth_pu/max_depth_vis, sprintf('%s/%s/%s_depth_pu_%d.png',folder,output_folder,date{idate},i),'Bitdepth',16);
+                if is_saving_depth_pu
+                    phase = angle(corr_imgs(1:end/2,:,:) + 1i*corr_imgs(end/2+1:end,:,:));
+                    phase = phase([1,end],:,:);
+                    freqsm = freqs;
+                    lambda = 3e8./freqsm;
+                    %neg = phase <=0;
+                    %phase =  (phase.*~neg + neg.*(-1.*phase + pi));
+                    phase(phase<0) = 2*pi + phase(phase<0);
+                    tic;
+                    depth_phaseunwarp = PhaseImgs2Depths(freqsm, phase, 0:0.02:10);
+                    save(sprintf('%s/%s/%s_depth_pu_%ld.mat',folder,depth_folder,date{idate},timestamp),'depth_phaseunwarp');
+                    imwrite(depth_phaseunwarp/max_depth_vis, sprintf('%s/%s/%s_depth_pu_%ld.png',folder,depth_folder,date{idate},timestamp),'Bitdepth',16);
                 end
                 % normalize, assemble
                 depth_pu_pair = reshape(depth_pu, 1, size(depth_pu,1), size(depth_pu,2));
@@ -186,9 +244,31 @@ use_depth_as_gt = 1;
                 % combine for pix2pix aligned data loader
                 im_pair = cat(3,corr,depth_pu_pair);
                 % split and save
-                if is_saving
-                    save(sprintf('%s/%s/%s_pix2pix_test_real_%d',folder,output_folder,date{idate},i),'im_pair');
+                if is_saving_release
+                    save(sprintf('%s/%s/%s_pix2pix_test_real_%ld',datasets_folder,data_folder,date{idate},timestamp),'im_pair');
                 end
+                
+                
+                %%%%%%%%% visualize point clouds
+                %need sensor param
+                if is_visualizing
+                    pointCloud = my_depthToPointCloud(depth,config);
+                    pointCloud_source = my_depthToPointCloud(s_depth,config);
+                    pointCloud_pu = my_depthToPointCloud(depth_pu,config);
+                    figure(numel(freqs)+2);
+                    subplot(131); pcshow(reshape(pointCloud,width*height,3)); title('point cloud of tintin depth');
+                    subplot(132); pcshow(reshape(pointCloud_source,width*height,3)); title('point cloud of source depth');
+                    subplot(133); pcshow(reshape(pointCloud_pu,width*height,3)); title('point cloud of phase unwrapped depth');
+                    if is_saving_debug
+                        save(sprintf('%s/%s/%s_pointcloud_%ld',folder,depth_folder,date{idate},timestamp),'pointCloud');
+                        save(sprintf('%s/%s/%s_pointcloud_pu_%ld',folder,depth_folder,date{idate},timestamp),'pointCloud_pu');
+                    end
+                end
+
+
+                if is_visualizing
+                    pause(10);
+                end    
                 
                 
             end
@@ -196,23 +276,4 @@ use_depth_as_gt = 1;
 
     end
 
-%             %%%%%%%%% visualize point clouds
-%             %need sensor param
-%             if resize_height == height
-%                 pointCloud = my_depthToPointCloud(depth);
-%                 pointCloud_pu = my_depthToPointCloud(depth_pu,'no_calib');
-%                 if is_visualizing
-%                     figure(numel(freqs)+2);
-%                     subplot(121); pcshow(reshape(pointCloud,width*height,3)); title('point cloud of tintin depth');
-%                     subplot(122); pcshow(reshape(pointCloud_pu,width*height,3)); title('point cloud of phase unwrapped depth');
-%                 end
-%                 if is_saving
-%                     save(sprintf('%s/%s/%s_pointcloud_%d',folder,output_folder,date{idate},i),'pointCloud');
-%                     save(sprintf('%s/%s/%s_pointcloud_pu_%d',folder,output_folder,date{idate},i),'pointCloud_pu');
-%                 end
-%             end
-% 
-%             if is_visualizing
-%                 pause(1);
-%             end    
 %    end 

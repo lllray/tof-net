@@ -7,20 +7,21 @@ clc; clear; close all
 
 max_depth_norm = 10; % max depth for normalization to [0,1]
 max_depth_vis = 10; % max depth for visualization
-is_visualizing = true;
+is_visualizing = false;
 is_saving = true;
 normalization = 2;
 catamp = 1; % if concat amp image with imA
 calib_phase_offset = 1; 
 navg = 1; % number of measurements to average
+datasets_folder = '/media/lixin/7A255A482B58BC84/lx/0428/deep_tof_datasets/';
 output_folder = sprintf('phase_calibrated_norm2amp_rebuttal_mean%d', navg);
 
 medfilt_size = 3;
 use_my = 1;
-use_depth_as_gt = 0;
+use_depth_as_gt = 1;
 
     %-----  my data  ---------
-    date = {'0420-4'};
+    date = {'_2022-04-28-16-41-48'};
     freqs = [45180000,37650000];
     takes = 0;
     width = 240;
@@ -31,7 +32,7 @@ use_depth_as_gt = 0;
     % mydata_b = importdata('~/bag/tintin_EE367/my_data/itof_output_b.txt').';
 
     for idate = 1:numel(date)
-        folder = ['~/bag/tintin_EE367/my_data/' date{idate}];
+        folder = [datasets_folder date{idate}];
         mkdir([folder '/' output_folder]);
         itakes = 1;
 
@@ -206,6 +207,6 @@ use_depth_as_gt = 0;
             end
 
             if is_visualizing
-                pause(1);
+                pause(10);
             end    
     end 
