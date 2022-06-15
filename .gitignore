@@ -1,2 +1,8 @@
 
 .idea/
+
+src/GAN/results/*
+
+src/GAN/datasets/*
+
+src/GAN/checkpoints/*
