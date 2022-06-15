@@ -1,18 +1,8 @@
 
 .idea/
 
-src/pbrt-v3-tof/build/
-
-src/GAN/results/my_resnet_lite_my_imageGAN_128_pretrained/latest_test/images/fake_B/
-
-src/GAN/results/my_resnet_lite_my_imageGAN_128_pretrained/latest_test_real_all_calib/images/real_A/
-
-src/GAN/results/my_resnet_lite_my_imageGAN_128_pretrained/latest_test_real_all_calib/images/real_B/
-
-src/GAN/results/my_resnet_lite_my_imageGAN_128_pretrained/latest_test_real_all_calib/
-
-*.mat
-
 src/GAN/results/
+
 src/GAN/datasets/
+
 src/GAN/checkpoints/
