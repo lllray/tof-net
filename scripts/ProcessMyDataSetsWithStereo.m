@@ -15,10 +15,10 @@ normalization = 2;
 catamp = 1; % if concat amp image with imA
 calib_phase_offset = 0; 
 navg = 1; % number of measurements to average
-datasets_folder = '/media/lixin/7A255A482B58BC84/lx/0429/little_test/';
-depth_folder = sprintf('phase_calibrated_norm2amp_rebuttal_mean%d', navg);
-data_folder = sprintf('impair_mean%d', navg);
-config = '0429';
+datasets_folder = '/media/lixin/7A255A482B58BC84/lx/0429/deep_tof_land_datasets/';
+depth_folder = sprintf('train_data/depth');
+data_folder = sprintf('train_data/train');
+config = '0428';
 medfilt_size = 1;
 use_my = 1;
 use_depth_as_gt = 1;
@@ -53,14 +53,14 @@ mkdir([datasets_folder '/' data_folder]);
             fnd = sprintf('%s/stereo_depth_in_itof.txt',folder);
             if ~exist(fnd,'file')
                 printf("not find depth data")
-               return;
+               continue;
             end
             depth_data = importdata(fnd).';
             
             fnsd = sprintf('%s/itof_output_depth.txt',folder);
-            if ~exist(fnd,'file')
+            if ~exist(fnsd,'file')
                 printf("not find source depth data")
-               return;
+               continue;
             end
             source_depth_data = importdata(fnsd).';
             

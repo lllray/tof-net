@@ -3,7 +3,7 @@ data_type = 2;
 if data_type == 1
  load('~/ROS/DeepEnd2End/DeepToF_release_0.1/src/GAN/datasets/mpi_correction_corrnormamp2depth_albedoaug_zpass/train/000980.mat');
 %load('~/ROS/DeepEnd2End/DeepToF_release_0.1/src/GAN/datasets/mpi_correction_corrnormamp2depth_albedoaug_zpass/test_real_all_calib_new/train/1110_pix2pix_test_real_17.mat');
-else load('~/bag/tintin_EE367/my_data/dataset-0421-3/train/dataset-0421-3_pix2pix_test_real_169.mat');
+else load('/media/lixin/7A255A482B58BC84/lx/0429/deep_tof_datasets/impair_mean1/_2022-04-29-14-31-51_pix2pix_test_real_48.mat');
 end
 dist_gt = permute(im_pair(1,:,end/2+1:end),[2,3,1]) * 10;
 
@@ -30,7 +30,7 @@ if data_type == 1
     figure(2);
     pcshow(reshape(pointCloud_gt,320*240,3)); title('point cloud of gt depth');
 elseif data_type == 2
-    pointCloud_gt = my_depthToPointCloud(dist_gt,'no_calib');
+    pointCloud_gt = my_depthToPointCloud(dist_gt,'0429');
     figure(2);
     pcshow(reshape(pointCloud_gt,240*180,3)); title('point cloud of gt depth');
 end

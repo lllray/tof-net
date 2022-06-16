@@ -4,12 +4,12 @@ width = 240;
 height = 180;
 
 config = '0429';
-model_name_gan = 'new_gan_128'; % my_resnet_lite_my_imageGAN_128_pretrained,22-04-20-num4,my_resnet_lite_my_imageGAN_128
-data_name = "latest_test_0429_1";
+model_name_gan = 'mix_data_resnet_lite_my_imageGAN_128'; % my_resnet_lite_my_imageGAN_128_pretrained,22-04-20-num4,my_resnet_lite_my_imageGAN_128
+data_name = "latest_test_stereo_little_04292";
 show_royal = 1;
 show_left_image = 1;
 save_depth_compare_image = 0;
-run_single = 1;
+run_single = 0;
 type = 'fake_B'; % fake_B,real_A,real_B,sra
 mydata = '/media/lixin/7A255A482B58BC84/lx/0429/little_test2/impair_mean1';
 source_path = '/media/lixin/7A255A482B58BC84/lx/0429/little_test2/phase_calibrated_norm2amp_rebuttal_mean1';
@@ -128,6 +128,8 @@ time_stamp = '1651213921040147';
         
         if run_single
             break;
+        elseif save_depth_compare_image == 0
+             pause(5);
         end
     end
 

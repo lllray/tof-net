@@ -153,14 +153,14 @@ for epoch = epoch_start, opt.niter+opt.niter_decay do
         -- run backward pass
         model:OptimizeParameters(opt)
         -- display on the web server
-        if counter % opt.display_freq == 0 and opt.display_id > 0 then
-          visualize_current_results()
-        end
+        --if counter % opt.display_freq == 0 and opt.display_id > 0 then
+        --  visualize_current_results()
+        --end
 
         -- logging
         if counter % opt.print_freq == 0 then
           print_current_errors(epoch, counter_in_epoch)
-          plot_current_errors(epoch, counter_in_epoch/num_batches, opt)
+        --  plot_current_errors(epoch, counter_in_epoch/num_batches, opt)
         end
 
         -- save latest model

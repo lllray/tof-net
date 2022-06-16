@@ -1,3 +1,5 @@
+src/GAN/my_train.sh
+src/GAN/my_test.sh
 
 .idea/
 
@@ -6,3 +8,6 @@ src/GAN/results/*
 src/GAN/datasets/*
 
 src/GAN/checkpoints/*
+
+
+src/GAN/options.lua
