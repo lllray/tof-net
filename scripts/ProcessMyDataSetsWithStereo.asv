@@ -14,9 +14,9 @@ normalization = 2;
 catamp = 1; % if concat amp image with imA
 calib_phase_offset = 0; 
 navg = 1; % number of measurements to average
-datasets_folder = '/media/lixin/7A255A482B58BC84/lx/itof_datasets/220908/';
-depth_folder = sprintf('train_data/depth');
-data_folder = sprintf('train_data/train');
+datasets_folder = '/media/lixin/7A255A482B58BC84/lx/0429/deep_tof_datasets';
+depth_folder = sprintf('train_data2/depth');
+data_folder = sprintf('train_data2/train');
 config = '0429';
 data_from_datasets = 1;
 load_left_image = 1
@@ -103,8 +103,8 @@ mkdir([datasets_folder '/' data_folder]);
                     continue
                 end
                 find = 0;
-                for k = 1:sgmd_c
-                    if timestamp == sgm_timestamp_list(k)
+                for j = 1:sgmd_c
+                    if timestamp == sgm_timestamp_list(j)
                         find = 1;
                         break;
                     end
@@ -117,7 +117,7 @@ mkdir([datasets_folder '/' data_folder]);
                 s_depth = reshape(s_depth,width,height)';
                 s_depth(s_depth<=0.0) = nan; % is importan to set nan
                 s_depth(s_depth>=max_depth_norm) = nan; % is importan to set nan
-                sgm_depth = sgm_depth_data(:,k);
+                sgm_depth = sgm_depth_data(:,j);
                 sgm_depth = sgm_depth(4:3+height*width);
                 sgm_depth = reshape(sgm_depth,width,height)';
                 sgm_depth(sgm_depth<=0.0) = nan; % is importan to set nan
@@ -216,7 +216,7 @@ mkdir([datasets_folder '/' data_folder]);
                     if maxamp > minamp
                         amp = amp / (maxamp-minamp);
                     end
-                    corr = cat(1,corr,amp,amp);
+                    corr = cat(1,corr,amp);
                 end
 
                 % normalize, assemble
@@ -225,7 +225,6 @@ mkdir([datasets_folder '/' data_folder]);
                 sgm_depth_pair = reshape(sgm_depth, 1, size(sgm_depth,1), size(sgm_depth,2));
                 depth_pair = depth_pair / max_depth_norm; % convert to [0,1]
                 s_depth_pair = s_depth_pair / max_depth_norm; % convert to [0,1]
-                sgm_depth_pair = sgm_depth_pair / max_depth_norm;
                 if load_left_image
                         left_image = imresize(left_image,[height,width],'bilinear');     
                         
@@ -234,7 +233,7 @@ mkdir([datasets_folder '/' data_folder]);
                 if ~catamp
                     depth_pair = cat(1, depth_pair, s_depth_pair, depth_pair, depth_pair);
                 elseif load_left_image
-                    depth_pair = cat(1, depth_pair, s_depth_pair, left_image_pu_pair,sgm_depth_pair);
+                    depth_pair = cat(1, depth_pair, s_depth_pair, left_image_pu_pair);
                 else     
                     depth_pair = cat(1, depth_pair, s_depth_pair, depth_pair, depth_pair, depth_pair);
                 end
