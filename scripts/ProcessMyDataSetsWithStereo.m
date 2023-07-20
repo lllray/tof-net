@@ -11,16 +11,18 @@ is_visualizing = false;
 is_saving_debug = false;
 is_saving_release = true;
 normalization = 2;
+normalization_amp = 0;%6000
 catamp = 1; % if concat amp image with imA
 calib_phase_offset = 0; 
 navg = 1; % number of measurements to average
-datasets_folder = '/media/lixin/7A255A482B58BC84/lx/itof_datasets/220908/';
-depth_folder = sprintf('train_data/depth');
-data_folder = sprintf('train_data/train');
+datasets_folder = '/media/lixin/7A255A482B58BC84/lx/0429/deep_tof_datasets/';
+depth_folder = sprintf('train_data_1/depth');
+data_folder = sprintf('train_data_1/train');
 config = '0429';
 data_from_datasets = 1;
 load_left_image = 1
-
+all_min_amp = 99999;
+all_max_amp = 0;
 mkdir([datasets_folder '/' depth_folder]);
 mkdir([datasets_folder '/' data_folder]);
 
@@ -91,7 +93,7 @@ mkdir([datasets_folder '/' data_folder]);
                 depth = depth(4:3+height*width);
                 depth = reshape(depth,width,height)';
                 depth(depth<=0.0) = nan; % is importan to set nan
-                depth(depth>=max_depth_norm) = nan; % is importan to set nan
+                depth(depth>=max_depth_norm) = max_depth_norm; % is importan to set nan
                 find = 0;
                 for j = 1:sd_c
                     if timestamp == timestamp_list(j)
@@ -116,12 +118,12 @@ mkdir([datasets_folder '/' data_folder]);
                 s_depth = s_depth(4:3+height*width);
                 s_depth = reshape(s_depth,width,height)';
                 s_depth(s_depth<=0.0) = nan; % is importan to set nan
-                s_depth(s_depth>=max_depth_norm) = nan; % is importan to set nan
+                s_depth(s_depth>=max_depth_norm) = max_depth_norm; % is importan to set nan
                 sgm_depth = sgm_depth_data(:,k);
                 sgm_depth = sgm_depth(4:3+height*width);
                 sgm_depth = reshape(sgm_depth,width,height)';
                 sgm_depth(sgm_depth<=0.0) = nan; % is importan to set nan
-                sgm_depth(sgm_depth>=max_depth_norm) = nan; % is importan to set nan
+                sgm_depth(sgm_depth>=max_depth_norm) = max_depth_norm; % is importan to set nan
                 
                 left_image_name = sprintf('%s/left/%ld.jpg',folder,timestamp);
                 if load_left_image
@@ -209,14 +211,23 @@ mkdir([datasets_folder '/' data_folder]);
                 end
                 corr = corr([1,nf,nf+1,end],:,:); % choose some freq (if numel(freqs)>2)
                 if catamp
-                    tmp = corr_imgs_abs(1,:,:);
-                    minamp = min(tmp(:));
-                    maxamp = max(tmp(:));
-                    amp = tmp-minamp;
-                    if maxamp > minamp
-                        amp = amp / (maxamp-minamp);
+                    if normalization_amp <= 0
+                        tmp = corr_imgs_abs(1,:,:);
+                        minamp = min(tmp(:));
+                        maxamp = max(tmp(:));
+                        all_min_amp = min(all_min_amp,minamp)
+                        all_max_amp = max(all_max_amp,maxamp)
+                        amp = tmp-minamp;
+                        if maxamp > minamp
+                            amp = amp / (maxamp-minamp);
+                        end
+                        corr = cat(1,corr,amp,amp);
+                    else
+                        tmp = corr_imgs_abs(1,:,:);
+                        tmp(tmp>=normalization_amp) = normalization_amp;
+                        amp = tmp / normalization_amp;
+                        corr = cat(1,corr,amp,amp);
                     end
-                    corr = cat(1,corr,amp,amp);
                 end
 
                 % normalize, assemble

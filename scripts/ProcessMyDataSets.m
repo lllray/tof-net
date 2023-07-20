@@ -7,7 +7,7 @@ clc; clear; close all
 
 max_depth_norm = 10; % max depth for normalization to [0,1]
 max_depth_vis = 10; % max depth for visualization
-is_visualizing = true;
+is_visualizing = false;
 is_saving_debug = false;
 is_saving_depth_pu = false;
 is_saving_release = true;
@@ -15,7 +15,7 @@ normalization = 2;
 catamp = 1; % if concat amp image with imA
 calib_phase_offset = 0; 
 navg = 1; % number of measurements to average
-datasets_folder = '~/bag/tintin_EE367/my_data/';
+datasets_folder = '/home/lixin/data/itof_test/230416-02'; % 文件夹中包含 itof_output_37650000.txt itof_output_45180000.txt itof_output_depth.txt
 depth_folder = sprintf('phase_calibrated_norm2amp_rebuttal_mean%d', navg);
 data_folder = sprintf('impair_mean%d', navg);
 
@@ -24,7 +24,7 @@ use_my = 1;
 use_depth_as_gt = 1;
 
     %-----  my data  ---------
-    date = {'dataset-0427-1'};
+    date = {''};
     freqs = [45180000,37650000];
     takes = 0;
     width = 240;
